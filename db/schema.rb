@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225113000) do
+ActiveRecord::Schema.define(version: 20160225123030) do
 
   create_table "leaves", force: :cascade do |t|
     t.string  "reasonforleave"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160225113000) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
+    t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20160225113000) do
     t.string   "name"
     t.string   "gender"
     t.integer  "phone_no"
-    t.date     "doj"
     t.integer  "role_id"
   end
 
