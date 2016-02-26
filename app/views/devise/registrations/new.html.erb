@@ -27,18 +27,18 @@
   </div>
 
   <div class="field">
-    <%= radio_button_tag(:gender, "male")  %>
+    <%= radio_button_tag(:gender, "male", :checked => true)  %>
     <%= f.label :male %>
     <%= radio_button_tag(:gender, "female")  %>
     <%= f.label :female %>
   </div>
 
   <div class="field">
-    <%= f.label :phone_no %><br />
+    <%= f.label :phone %><br />
     <%= f.text_field :phone_no %>
   </div>
 
-  
+
 
   <div class="actions">
     <%= f.submit "Sign up" %>
