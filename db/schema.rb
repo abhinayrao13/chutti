@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20160225124047) do
     t.datetime "updated_at",                          null: false
     t.string   "name"
     t.string   "gender"
-    t.integer  "phone_no"
+    t.string   "phone_no"
     t.integer  "role_id"
   end
 
