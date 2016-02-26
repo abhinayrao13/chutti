@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   }
   resource :leaves
   resource :notices
+  resources :roles
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -58,10 +59,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-<<<<<<< HEAD
-=======
-  resources :leaves
-  resources :notices
-  resources :roles
->>>>>>> 3c4d8a84afb521e59bfb090dd3c4d41310dadce3
+  
 end
