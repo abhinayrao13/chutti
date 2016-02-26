@@ -1,0 +1,4 @@
+  <%= form_for(@role) do |l|%>
+    <%= l.text_field :user_role ,id: "userrole"%></br></br>
+    <%= l.submit "Submit", onclick: "return tocheck()" %>
+  <% end%>
