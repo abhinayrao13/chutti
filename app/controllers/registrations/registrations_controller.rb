@@ -13,6 +13,7 @@ class Registrations::RegistrationsController < Devise::RegistrationsController
     @user.name = params[:user][:name]
     @user.gender = params[:gender]
     @user.phone_no = params[:user][:phone_no]
+    @user.role_id = params[:user][:role_id]
     @user.save
   end
 

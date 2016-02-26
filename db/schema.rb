@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 20160225124047) do
     t.string   "name"
     t.string   "gender"
     t.integer  "phone_no"
-    t.date     "doj"
     t.integer  "role_id"
   end
 

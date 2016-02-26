@@ -4,7 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :role
+
   validates :name, :presence => true, format: { with: /\A[a-zA-Z]+\z/, message: "Please enter correct name" }
   validates :phone_no, :numericality => true, :length => { minimum: 10, maximum: 10 }
+  validates :gender, :presence => true, inclusion: { in: ["male","female"] }
+  validates :role_id, inclusion: { in: Role.get_role_ids }
 
 end

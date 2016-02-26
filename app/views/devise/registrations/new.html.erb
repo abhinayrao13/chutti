@@ -27,10 +27,14 @@
   </div>
 
   <div class="field">
-    <%= radio_button_tag(:gender, "male", :checked => true)  %>
+    <%= radio_button("user", "gender", "male", :checked => true) %>
     <%= f.label :male %>
-    <%= radio_button_tag(:gender, "female")  %>
+    <%= radio_button("user", "gender", "female") %>
     <%= f.label :female %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_select(:role_id, Role.all, :id, :user_role, :prompt => 'Please select designation') %>
   </div>
 
   <div class="field">
