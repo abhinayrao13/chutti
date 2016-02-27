@@ -3,7 +3,7 @@
   <%= r.id%>
   <%= r.user_role%>
   <%= link_to "edit", "/roles/#{r.id}/edit"%>
-    <button type="button", id= "myBtn" onclick = "myBtn(<%= r.id%>)">delete</button></br></br>
+  <button type="button" onclick = "my_btn(<%= r.id%>)">delete</button></br></br>
 </div>
 <%end%>
 <%= link_to "create new", "/roles/new"%>
