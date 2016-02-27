@@ -16,3 +16,5 @@
 //= require roles
 //= require app.min
 //= require bootstrap.min
+//= require icheck.min
+//= require custom

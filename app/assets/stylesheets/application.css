@@ -15,4 +15,5 @@
  *= require skin-blue.min
  * require_tree .
  *= require_self
+ *= require blue
  */

@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
 
   belongs_to :role
 
-  validates :name, :presence => true, format: { with: /\A[a-zA-Z]+\z/, message: "Please enter correct name" }
+  validates :name, :presence => true, format: { with: /\A[a-zA-Z]+\z/ }
   validates :phone_no, :numericality => true, :length => { minimum: 10, maximum: 10 }
   validates :gender, :presence => true, inclusion: { in: ["male","female"] }
   validates :role_id, inclusion: { in: Role.get_role_ids }
+  validates :max_leaves, :numericality => true, presence: true
 
 end
