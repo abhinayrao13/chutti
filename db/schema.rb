@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225124047) do
+ActiveRecord::Schema.define(version: 20160227062619) do
 
   create_table "leaves", force: :cascade do |t|
     t.string  "reasonforleave"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160225124047) do
     t.string   "gender"
     t.string   "phone_no"
     t.integer  "role_id"
+    t.integer  "max_leaves"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

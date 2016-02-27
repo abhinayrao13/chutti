@@ -15,6 +15,10 @@
 //= require turbolinks
 //= require app.min
 //= require bootstrap.min
+
 //= require moment.min
 //= require daterangepicker
 //= require roles
+
+//= require icheck.min
+//= require custom

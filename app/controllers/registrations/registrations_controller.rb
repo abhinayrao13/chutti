@@ -1,11 +1,16 @@
 class Registrations::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
+  before_filter :require_no_authentication, except: [:new, :edit]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    if user_signed_in?
+      super
+    else
+      redirect_to '/users/sign_in'
+    end
+  end
 
   # POST /resource
   def create
@@ -14,6 +19,7 @@ class Registrations::RegistrationsController < Devise::RegistrationsController
     @user.gender = params[:gender]
     @user.phone_no = params[:user][:phone_no]
     @user.role_id = params[:user][:role_id]
+    @user.max_leaves = params[:user][:max_leaves]
     @user.save
   end
 

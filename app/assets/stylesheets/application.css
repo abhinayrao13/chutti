@@ -16,4 +16,5 @@
  *= require daterangepicker
  * require_tree .
  *= require_self
+ *= require blue
  */
