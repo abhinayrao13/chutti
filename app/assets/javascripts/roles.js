@@ -19,3 +19,13 @@ function my_btn(l) {
   }
  });
 }
+$(document).ready(function(){
+  $('input[id="datetimepicker"]').daterangepicker({
+    locale: {
+            format: 'DD/MM/YYYY'
+        },
+    "minDate":  $('#current_date').data("todays-date"),
+    startDate: '-2m',
+    endDate: '+2d'
+  });
+})

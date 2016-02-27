@@ -1,4 +1,23 @@
-<% @leave.each do |l|%>
-<%= l.reasonforleave%>
-<%= l.status%>
-<% end%>
+<div class="container-fluid" >
+  <h1>User Leave Index</h1>
+  <div id="table">
+    <div class="row">
+      <div class="col-sm-1"><Strong>Id</strong></div>
+      <div class="col-sm-2"><Strong>Reason For Leave</Strong></div>
+      <div class="col-sm-1"><Strong>Status</Strong></div>
+      <div class="col-sm-2"><Strong>Leave On</Strong></div>
+    </div></br>
+  <% @leave.each do |f|%>
+  <div class="row">
+    <div class="col-sm-1"><%= f.id%></div>
+    <div class="col-sm-2"><%= f.reason_for_leave%></div>
+    <div class="col-sm-1"><%= f.status%></div>
+    <div class="col-sm-2"><%= f.leave_date_from%></div>
+    <div class="col-sm-2"><%= f.leave_date_to%></div>
+    <div class="col-sm-1"><%= link_to "edit", "/leaves/#{f.id}/edit"%></div>
+    <div class="col-sm-1"><%= link_to "remove", "/leaves/#{f.id}" , method: "delete"%></br></br></div>
+  </div>
+  <% end%>
+  <%= link_to "create new", "/leaves/new"%>
+</div>
+</div>

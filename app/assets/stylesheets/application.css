@@ -13,6 +13,7 @@
  *= require bootstrap.min
  *= require AdminLTE.min
  *= require skin-blue.min
+ *= require daterangepicker
  * require_tree .
  *= require_self
  */

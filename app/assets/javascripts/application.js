@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require roles
 //= require app.min
 //= require bootstrap.min
+//= require moment.min
+//= require daterangepicker
+//= require roles

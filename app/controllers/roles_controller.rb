@@ -19,10 +19,13 @@ class RolesController < ApplicationController
   end
   def edit
       @role = Role.find(params[:id])
+    
   end
   def update
       @role = Role.find(params[:id])
       @role.update(:user_role =>params[:role][:user_role])
-      redirect_to "/roles"
+      respond_to do |format|
+          format.html {redirect_to "/roles"}
+      end
   end
 end

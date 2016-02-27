@@ -1,0 +1,12 @@
+
+
+<div>
+  <div id="current_date" data-todays-date="<%= Time.now.to_date.strftime("%d-%m-%Y") %>"></div>
+  <%= form_for(@leave) do |l|%>
+    <%= l.text_area :reason_for_leave , :placeholder => "Reason For Leave"%></br></br>
+    <%= l.text_field :user_id , :placeholder => "User Id" %></br></br>
+    <%= l.text_field :leave_date_from , :placeholder => "Date of the leave", id: 'datetimepicker'%></br></br>
+
+  <%= l.submit "Submit"%>
+  <% end%>
+</div>
