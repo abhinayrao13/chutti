@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227062619) do
+ActiveRecord::Schema.define(version: 20160227064907) do
 
   create_table "leaves", force: :cascade do |t|
-    t.string  "reasonforleave"
+    t.string  "reason_for_leave"
     t.integer "user_id"
     t.string  "status"
-    t.string  "leave_date"
+    t.string  "leave_date_from"
+    t.string  "leave_date_to"
   end
 
   create_table "notices", force: :cascade do |t|
