@@ -1,6 +1,6 @@
 class NoticesController < ApplicationController
   def index
-    @notice = Notice.all
+    @notice = Notice.all.reverse
   end
   def new
     @notice = Notice.new

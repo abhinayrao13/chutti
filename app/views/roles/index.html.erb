@@ -1,9 +1,22 @@
-<%@role.each do |r|%>
-<div id="role_<%= r.id %>">
-  <%= r.id%>
-  <%= r.user_role%>
-  <%= link_to "edit", "/roles/#{r.id}/edit"%>
-  <button type="button" onclick = "my_btn(<%= r.id%>)">delete</button></br></br>
+
+<h1>Roles List</h1>
+<div class="box box-primary">
+  <div class="container-fluid" >
+    </br>
+    <div  id="table", class="container-fluid" >
+      <div class="row">
+      </br>
+        <div class="col-sm-1"><Strong>Id</strong></div>
+        <div class="col-sm-1"><Strong>UserRole</Strong></div>
+      </div></br>
+      <%@role.each do |r|%>
+        <div class="row">
+          <div class="col-sm-1"><%= r.id%></div>
+          <div class="col-sm-1"><%= r.user_role%></div>
+          <div class="col-sm-1"><%= link_to "edit", "/roles/#{r.id}/edit",class: "btn btn-info"%></div>
+          <button type="button" onclick = "my_btn(<%= r.id%>)" class="btn btn-info">delete</button></br></br>
+        </div>
+      <% end%>
+      <%= link_to "create new", "/roles/new", class: "btn btn-success"%></br></br>
+  </div>
 </div>
-<%end%>
-<%= link_to "create new", "/roles/new"%>

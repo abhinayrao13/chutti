@@ -1,4 +1,10 @@
-  <%= form_for(@role) do |l|%>
-    <%= l.text_field :user_role ,id: "user_role"%></br></br>
-    <%= l.submit "Submit", onclick: "return to_check()" %>
-  <% end%>
+<div class="box box-primary">
+  <div class="container-fluid" >
+    </br>
+    <%= form_for(@role) do |l|%>
+      <label for="user_role">Role: </label>
+      <%= l.text_field :user_role ,id: "user_role"%></br></br>
+      <%= l.submit "Submit", onclick: "return to_check()", class: "btn btn-success" %>
+    <% end%></br></br>
+  </div>
+</div>

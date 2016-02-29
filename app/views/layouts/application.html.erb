@@ -147,12 +147,12 @@
                 <img src="/assets/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  <%= current_user.name%></br>
+                  <%= current_user.email%>
                 </p>
               </li>
               <!-- Menu Body -->
-              <li class="user-body">
+              <!-- <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
                     <a href="#">Followers</a>
@@ -164,8 +164,7 @@
                     <a href="#">Friends</a>
                   </div>
                 </div>
-                <!-- /.row -->
-              </li>
+              </li> -->
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
@@ -226,7 +225,12 @@
          <% if !admin?%>
           <li><a href="/leaves/new"><i class="fa fa-link"></i> <span>Apply For Leave</span></a></li>
         <%end%>
+        <% if admin?%>
+          <li><a href="/users/sign_up"><i class="fa fa-link"></i> <span>Add An Employee</span></a></li>
+          <li><a href="/list_users"><i class="fa fa-link"></i> <span>Employee List</span></a></li>
+          <li><a href="/roles"><i class="fa fa-link"></i> <span>Roles</span></a></li>
 
+        <%end%>
 
           <!-- <%= link_to('Sign out', destroy_user_session_path, :method => :delete, :class=> "btn btn-default btn-flat") %> -->
 
@@ -273,9 +277,9 @@
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
-    <div class="pull-right hidden-xs">
+    <!-- <div class="pull-right hidden-xs">
       Anything you want
-    </div>
+    </div> -->
     <!-- Default to the left -->
     <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
   </footer>

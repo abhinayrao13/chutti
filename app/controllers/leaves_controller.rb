@@ -1,4 +1,5 @@
 class LeavesController < ApplicationController
+  before_action :leaves, only: [:create]
   def index
     if admin?
       @leave = Leave.where(status: "pending")
@@ -10,8 +11,7 @@ class LeavesController < ApplicationController
     @leave = Leave.new
   end
   def create
-    p params
-      @leave = Leave.create(:reason_for_leave => params[:leave][:reason_for_leave], :user_id => current_user.id, :status => "pending", :leave_date_from => params[:leave][:leave_date_from].split("-")[0],:leave_date_to => params[:leave][:leave_date_from].split("-")[1])
+    @leave = Leave.create(:reason_for_leave => params[:leave][:reason_for_leave], :user_id => current_user.id, :status => "pending", :leave_date_from => params[:leave][:leave_date_from].split("-")[0],:leave_date_to => params[:leave][:leave_date_from].split("-")[1])
       if(@leave.id != nil)
         respond_to do |format|
           format.html {redirect_to "/leaves"}
@@ -44,16 +44,26 @@ class LeavesController < ApplicationController
   # end
   def leave_status_accept
     @leave = Leave.find(params[:id])
-    @leave.update(:status => "Accepted")
+    @leave.update(:status => "accepted")
     respond_to do |format|
       format.html {redirect_to "/leaves"}
     end
   end
   def leave_status_decline
     @leave = Leave.find(params[:id])
-    @leave.update(:status => "Declined")
+    @leave.update(:status => "declined")
     respond_to do |format|
       format.html {redirect_to "/leaves"}
     end
+  end
+end
+
+
+private
+def leaves
+  if current_user.max_leaves <= current_user.leaves.where(:status => "accepted").count
+    return false
+  else
+    return true
   end
 end

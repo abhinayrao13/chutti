@@ -21,9 +21,11 @@
       <%end%>
       <div class="col-sm-1"><%= f.leave_date_from%></div>
       <div class="col-sm-1"><%= f.leave_date_to%></div>
-      <div class="col-sm-1"><%= link_to "edit", "/leaves/#{f.id}/edit",class: "btn btn-info"%></div>
-      <%if !admin? %>
-        <div class="col-sm-1"><%= link_to "remove", "/leaves/#{f.id}" , method: "delete",class: "btn btn-info"%></br></br></div>
+      <%if f.status == "pending" %>
+        <div class="col-sm-1"><%= link_to "edit", "/leaves/#{f.id}/edit",class: "btn btn-info"%></div>
+        <%if !admin? %>
+          <div class="col-sm-1"><%= link_to "remove", "/leaves/#{f.id}" , method: "delete",class: "btn btn-info"%></div>
+        <%end%>
       <%end%>
       <%if admin? %>
         <div class="col-sm-1"><%= link_to "Accept", "/leaves/#{f.id}/leave_status_accept", class: "btn btn-info"%></br></br></div>
@@ -36,6 +38,7 @@
   </div>
 </div>
 
-<%if current_user.role.user_role != "Admin" %>
+<%if !admin? && leaves %>
+<%=leaves%>
   <%= link_to "create new", "/leaves/new",class: "btn btn-success"%></br></br>
   <%end%>
