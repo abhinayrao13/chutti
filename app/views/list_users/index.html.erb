@@ -1,0 +1,29 @@
+<div class="col-xs-11 table-responsive">
+  <%= link_to "Add new Employee", "/users/sign_up" %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Email</th>
+        <th>gender</th>
+        <th>Max Leaves</th>
+        <th>Change Max leaves</th>
+        <th>Delete Employee</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.each do |u| %>
+        <tr>
+          <td><%= u.id %></td>
+          <td><%= u.name %></td>
+          <td><%= u.email %></td>
+          <td><%= u.gender %></td>
+          <td><%= u.max_leaves %></td>
+          <td><%= link_to "Edit", "/users/#{u.id}/edit" %></td>
+          <td><%= link_to "Delete", "/users/#{u.id}", method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
