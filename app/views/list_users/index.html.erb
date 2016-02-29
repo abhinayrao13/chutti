@@ -1,12 +1,12 @@
 <div class="col-xs-11 table-responsive">
-  <%= link_to "Add new Employee", "/users/sign_up" %>
+  <%= link_to "Add new Employee", "/list_users/new" %>
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Employee Id</th>
         <th>Employee Name</th>
         <th>Email</th>
-        <th>gender</th>
+        <th>Gender</th>
         <th>Max Leaves</th>
         <th>Change Max leaves</th>
         <th>Delete Employee</th>
@@ -20,8 +20,12 @@
           <td><%= u.email %></td>
           <td><%= u.gender %></td>
           <td><%= u.max_leaves %></td>
-          <td><%= link_to "Edit", "/users/#{u.id}/edit" %></td>
-          <td><%= link_to "Delete", "/users/#{u.id}", method: :delete %></td>
+          <td><%= link_to "Edit", "/list_users/#{u.id}/edit" %></td>
+          <td>
+          <% if current_user != u %>
+            <%= link_to "Delete", "/list_users/#{u.id}", method: :delete %></td>
+          <% end %>
+          <td>
         </tr>
       <% end %>
     </tbody>

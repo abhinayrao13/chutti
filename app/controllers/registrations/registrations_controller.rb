@@ -4,13 +4,13 @@ class Registrations::RegistrationsController < Devise::RegistrationsController
   before_filter :require_no_authentication, except: [:new, :edit, :create]
 
   # GET /resource/sign_up
-  def new
-    if user_signed_in?
-      super
-    else
-      redirect_to '/users/sign_in'
-    end
-  end
+  # def new
+  #   if user_signed_in?
+  #     super
+  #   else
+  #     redirect_to '/users/sign_in'
+  #   end
+  # end
 
   # POST /resource
   def create

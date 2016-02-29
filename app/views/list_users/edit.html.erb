@@ -1,28 +1,6 @@
 <h2>Edit Employee</h2>
 
-<%= form_for(@user, url: "/users/#{@user.id}", html: { method: :put }) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= radio_button("user", "gender", "male", :checked => true) %>
-    <%= f.label :male %>
-    <%= radio_button("user", "gender", "female") %>
-    <%= f.label :female %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone_no %>
-  </div>
-
+<%= form_for(@user, url: "/list_users/#{@user.id}", html: { method: :put }) do |f| %>
   <div class="field">
     <%= f.label :max_leaves %><br />
     <%= f.text_field :max_leaves %>
@@ -33,4 +11,4 @@
   </div>
 <% end %>
 
-<%= link_to "Back", "/listusers" %>
+<%= link_to "Back", "/list_users" %>
