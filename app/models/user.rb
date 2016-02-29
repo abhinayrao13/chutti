@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role
+  has_many :notices
+  has_many :leaves, class_name: "Leave"
 
   validates :name, :presence => true, format: { with: /\A[a-zA-Z]+\z/ }
   validates :phone_no, :numericality => true, :length => { minimum: 10, maximum: 10 }

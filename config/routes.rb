@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :leaves
   resources :notices
   resources :roles
+
+  get "/leaves/:id/leave_status_accept" => "leaves#leave_status_accept"
+  get "/leaves/:id/leave_status_decline" => "leaves#leave_status_decline"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

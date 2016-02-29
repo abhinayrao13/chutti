@@ -1,12 +1,19 @@
-
-
-<div>
-  <div id="current_date" data-todays-date="<%= Time.now.to_date.strftime("%d-%m-%Y") %>"></div>
-  <%= form_for(@leave) do |l|%>
-    <%= l.text_area :reason_for_leave , :placeholder => "Reason For Leave"%></br></br>
-    <%= l.text_field :user_id , :placeholder => "User Id" %></br></br>
-    <%= l.text_field :leave_date_from , :placeholder => "Date of the leave", id: 'datetimepicker'%></br></br>
-
-  <%= l.submit "Submit"%>
-  <% end%>
+<h3>Apply For Leave</h3>
+<div class="box box-primary">
+  <div class="container-fluid">
+  </br>
+    <div id="current_date" data-todays-date="<%= Time.now.to_date.strftime("%d-%m-%Y") %>"></div>
+    <%= form_for(@leave) do |l|%>
+      <div>
+        <label for="reason">Reason: </label>
+          <%= l.text_area :reason_for_leave ,  id: "reason"%>
+          <span>
+            <%= @leave.errors.messages[:reason_for_leave].first%>
+          </span></br></br></br>
+      </div>
+      <label for="datetimepicker">Date:</label>
+      <%= l.text_field :leave_date_from , id: 'datetimepicker'%></br></br></br>
+    <%= l.submit "Submit" ,class: "btn btn-success"%></br></br></br></br>
+    <% end%>
+  </div>
 </div>

@@ -1,0 +1,16 @@
+<div class="box box-primary">
+  <div class="container-fluid" >
+  </br>
+    <%= form_for(@notice) do |l|%>
+      Subject: <%= l.text_field :subject %>
+      <span>
+        <%= @notice.errors.messages[:subject].first%>
+      </span></br></br></br>
+      Content: <%= l.text_area :content %>
+      <span>
+        <%= @notice.errors.messages[:content].first%>
+      </span></br></br></br>
+      <%= l.submit "Submit", onclick: "return to_check()" %></br></br>
+    <% end%>
+  </div>
+</div>

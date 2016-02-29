@@ -19,7 +19,6 @@ class RolesController < ApplicationController
   end
   def edit
       @role = Role.find(params[:id])
-    
   end
   def update
       @role = Role.find(params[:id])
