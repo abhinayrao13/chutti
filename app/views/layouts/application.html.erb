@@ -219,9 +219,10 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
-        <li class="active"><a href="/notices"><i class="fa fa-link"></i> <span>Notice Board</span></a></li>
+        <li class="<%= 'active' if params[:controller] == 'notices'%>"><a href="/notices"><i class="fa fa-link"></i> <span>Notice Board</span></a></li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="/leaves"><i class="fa fa-link"></i> <span>List of Leaves</span></a></li>
+        <li><a href="/notices/new"><i class="fa fa-link"></i> <span>Add Notice</span></a></li>
+        <li class="<%= 'active' if params[:controller] == 'leaves'%>"><a href="/leaves"><i class="fa fa-link"></i> <span>List of Leaves</span></a></li>
          <% if !admin?%>
           <li><a href="/leaves/new"><i class="fa fa-link"></i> <span>Apply For Leave</span></a></li>
         <%end%>
@@ -229,8 +230,8 @@
           <li><a href="/list_users/new"><i class="fa fa-link"></i> <span>Add An Employee</span></a></li>
           <li><a href="/list_users"><i class="fa fa-link"></i> <span>Employee List</span></a></li>
           <li><a href="/roles"><i class="fa fa-link"></i> <span>Roles</span></a></li>
-
         <%end%>
+          <li><a href="/my_notices"><i class="fa fa-link"></i> <span>My Notices</span></a></li>
 
           <!-- <%= link_to('Sign out', destroy_user_session_path, :method => :delete, :class=> "btn btn-default btn-flat") %> -->
 

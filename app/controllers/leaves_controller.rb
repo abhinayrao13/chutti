@@ -1,5 +1,5 @@
 class LeavesController < ApplicationController
-  before_action :leaves, only: [:create]
+  before_action :leaves, only: [:new]
   def index
     if admin?
       @leave = Leave.where(status: "pending")
@@ -22,6 +22,7 @@ class LeavesController < ApplicationController
   end
   def edit
       @leave = Leave.find(params[:id])
+      # render partial: "newedit"
   end
   def update
     @leave = Leave.find(params[:id])
@@ -61,9 +62,7 @@ end
 
 private
 def leaves
-  if current_user.max_leaves <= current_user.leaves.where(:status => "accepted").count
-    return false
-  else
-    return true
+  if current_user.max_leaves == current_user.leaves.where(:status => "accepted").count
+    redirect_to "/leaves"
   end
 end

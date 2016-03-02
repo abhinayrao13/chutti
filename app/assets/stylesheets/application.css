@@ -14,7 +14,9 @@
  *= require AdminLTE.min
  *= require skin-blue.min
  *= require daterangepicker
- * require_tree .
+ *= require fullcalendar.min
+ *= require fullcalendar.print
  *= require_self
  *= require blue
+ * require_tree .
  */

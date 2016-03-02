@@ -20,10 +20,10 @@
           <td><%= u.email %></td>
           <td><%= u.gender %></td>
           <td><%= u.max_leaves %></td>
-          <td><%= link_to "Edit", "/list_users/#{u.id}/edit" %></td>
+          <td><%= link_to "Edit", "/list_users/#{u.id}/edit", class: "btn btn-info"%></td>
           <td>
           <% if current_user != u %>
-            <%= link_to "Delete", "/list_users/#{u.id}", method: :delete %></td>
+            <%= link_to "Delete", "/list_users/#{u.id}", method: :delete ,class: "btn btn-info" %></td>
           <% end %>
           <td>
         </tr>

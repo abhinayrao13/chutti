@@ -28,4 +28,19 @@ $(document).ready(function(){
     startDate: '-2m',
     endDate: '+2d'
   });
+  $('#calendar').fullCalendar({
+       // put your options and callbacks here
+       header: {
+         left: 'prev,next today',
+         center: 'title',
+         right: 'month,agendaWeek,agendaDay'
+       },
+       buttonText: {
+         today: 'today',
+         month: 'month',
+         week: 'week',
+         day: 'day'
+       },
+       editable: true
+   });
 })

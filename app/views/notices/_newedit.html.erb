@@ -4,16 +4,19 @@
   </br>
     <%= form_for(@notice) do |l|%>
       <label for="subject",,class= "col-sm-2 control-label">Subject: </label>
-        <%= l.text_field :subject, :id => "subject" %>
+        <%= l.text_field :subject, :id => "subject", class: "form-control", placeholder: "Subject"%>
       <span>
         <%= @notice.errors.messages[:subject].first%>
       </span></br></br></br>
       <label for="content">Content: </label>
-       <%= l.text_area :content, :id => "content"%>
+       <%= l.text_area :content, :id => "content", class: "form-control", placeholder: "Content"%>
       <span>
         <%= @notice.errors.messages[:content].first%>
       </span></br></br></br>
-      <%= l.submit "Submit", onclick: "return to_check()" %></br></br>
+      <div class="box-footer">
+        <%= l.submit "Submit", onclick: "return to_check()", class: "btn btn-info pull-right"%>
+      </div><!-- /.box-footer -->
     <% end%>
   </div>
 </div>
++

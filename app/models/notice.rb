@@ -1,5 +1,5 @@
 class Notice < ActiveRecord::Base
-  belongs_to :users
+  belongs_to :user
 
   validates :subject, :presence => true
   validates :content, :presence => true

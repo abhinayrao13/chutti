@@ -1,22 +1,47 @@
-<h1>Notice Board</h1>
-<div class="box box-primary">
+<h3>Notice Board</h3>
+<!-- <div class="box box-primary">
   <div  id="table", class="container-fluid" >
     <div class="row">
     </br>
       <div class="col-sm-1"><Strong>Id</strong></div>
       <div class="col-sm-2"><Strong>Subject</Strong></div>
+      <div class="col-sm-2"><Strong>Posted On</Strong></div>
     </div></br>
     <div class="row">
     <% @notice.each do |f|%>
-      <div class="col-sm-12">
+
         <div class="col-sm-1"><%= f.id%></div>
         <div class="col-sm-2"><%= f.subject%></div>
+        <div class="col-sm-2"><%= f.posted_on%></div>
         <div class="col-sm-1"><%= link_to "show", "/notices/#{f.id}",class: "btn btn-info"%></div>
-        <div class="col-sm-1"><%= link_to "edit", "/notices/#{f.id}/edit",class: "btn btn-info"%></div>
-        <div class="col-sm-1"><%= link_to "remove", "/notices/#{f.id}" , method: "delete",class: "btn btn-info"%></br></br></div>
-      </div>
+        <%if admin?%>
+          <div class="col-sm-1"><%= link_to "edit", "/notices/#{f.id}/edit",class: "btn btn-info"%></div>
+          <div class="col-sm-1"><%= link_to "remove", "/notices/#{f.id}" , method: "delete",class: "btn btn-info"%></div>
+        <%end%></br></br>
     <% end%>
       </div>
     <%= link_to "Add Notice", "/notices/new",class: "btn btn-success"%></br></br>
+  </div>
+</div> -->
+<div class="box box-primary">
+  <div  id="table", class="container-fluid" >
+  </br>
+    <% @notice.each do |f|%>
+      <div class="post">
+        <div class="user-block">
+          <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+          <span class='username'>
+            <a href="#"><%=f.user.name%></a>
+          </span>
+          <span class='description'>posted on - <%=f.posted_on%></span>
+        </div><!-- /.user-block -->
+        <p>
+            Sub:<%= f.subject%>
+        </p>
+        <p>
+          <%= f.content%>
+        </p>
+      </div><!-- /.post -->
+    <% end%>
   </div>
 </div>
