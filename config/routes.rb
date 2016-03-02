@@ -12,12 +12,18 @@ Rails.application.routes.draw do
   get "/leaves/:id/leave_status_accept" => "leaves#leave_status_accept"
   get "/leaves/:id/leave_status_decline" => "leaves#leave_status_decline"
 
+
   get "/list_users" => "list_users#index"
   get "/list_users/new" => "list_users#new"
   get "/list_users/:id/edit" => "list_users#edit"
   post "/list_users" => "list_users#create"
   put "/list_users/:id" => "list_users#update"
   delete "/list_users/:id" => "list_users#delete"
+  get "/checkins/checkin" => "checkins#checkin"
+  get "/checkins/checkout" => "checkins#checkout"
+
+
+
   get "/my_notices" => "notices#my_notices"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -23,3 +23,4 @@
 //= require icheck.min
 //= require custom
 //= require fullcalendar.min
+//= require checkin
