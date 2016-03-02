@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
+  get 'users/sign_up' => redirect('users/sign_in')
   devise_for :users, controllers: {
         registrations: 'registrations/registrations'
   }
@@ -17,9 +18,7 @@ Rails.application.routes.draw do
   post "/list_users" => "list_users#create"
   put "/list_users/:id" => "list_users#update"
   delete "/list_users/:id" => "list_users#delete"
-
   get "/my_notices" => "notices#my_notices"
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

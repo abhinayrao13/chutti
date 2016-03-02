@@ -38,6 +38,6 @@ class ListUsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :name, :gender, :phone_no, :role_id, :max_leaves)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :gender, :phone_no, :role_id, :max_leaves)
   end
 end
