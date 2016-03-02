@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229043703) do
+ActiveRecord::Schema.define(version: 20160301065605) do
 
   create_table "leaves", force: :cascade do |t|
     t.string  "reason_for_leave"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160229043703) do
     t.string  "subject"
     t.string  "content"
     t.integer "user_id"
+    t.date    "posted_on"
   end
 
   create_table "roles", force: :cascade do |t|

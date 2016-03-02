@@ -22,10 +22,12 @@ module DeviseHelper
   end
 
   def error_messages!(resource, field)
-    return "" if resource.errors.empty?
-    p resource.errors
-    error = resource.errors[field][0].titleize
-    return error
+    if resource.errors[field].empty?
+      return ""
+    else
+      error = "#{field.to_s.titleize} : #{resource.errors[field][0]}"
+      return error
+    end
   end
 
 end

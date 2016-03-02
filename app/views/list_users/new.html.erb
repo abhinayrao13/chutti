@@ -1,6 +1,6 @@
 <div class="register-box">
   <div class="login-logo">
-    <b>Welcome</b>
+    <b>Add new Employee</b>
   </div>
   <!-- /.login-logo -->
   <div class="register-box-body">
@@ -13,7 +13,7 @@
       </div>
 
       <div class="form-group has-feedback">
-        <%= f.text_field :email, autofocus: true, placeholder: "Email", :size => 44, style: "padding:7px" %>
+        <%= f.text_field :email, placeholder: "Email", :size => 44, style: "padding:7px" %>
         <%= error_messages!(@user, :email) %>
       </div>
 
@@ -31,10 +31,13 @@
         <%= radio_button("user", "gender", "female") %>
         <%= f.label :female %>
       </div>
-
+      <div class="form-group has-feedback">
+        <%= f.collection_select(:role_id, Role.all, :id, :user_role, :prompt => 'Please select Role') %>
+        <%= error_messages!(@user, :role_id) %>
+      </div>
       <div class="form-group has-feedback">
         <%= f.label :set_leaves %><br />
-        <%= f.text_field :max_leaves, :size => 44, style: "padding:7px" %>
+        <%= f.text_field :max_leaves, :size => 44, value: 12, style: "padding:7px" %>
         <%= error_messages!(@user, :max_leaves) %>
       </div>
 
