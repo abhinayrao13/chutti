@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302094432) do
+ActiveRecord::Schema.define(version: 20160303095818) do
 
   create_table "checkins", force: :cascade do |t|
     t.integer  "user_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160302094432) do
     t.string   "phone_no"
     t.integer  "role_id"
     t.integer  "max_leaves"
+    t.string   "image_uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

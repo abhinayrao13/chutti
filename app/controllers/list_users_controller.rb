@@ -1,5 +1,5 @@
 class ListUsersController < ApplicationController
-  before_action :admin?
+  skip_before_action :admin?, only: [:update]
 
   def index
     @user = User.all
@@ -24,8 +24,11 @@ class ListUsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(max_leaves: params[:user][:max_leaves])
-    redirect_to "/list_users"
+    @user.update(user_params)
+    p "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    p @user.errors
+    p "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    redirect_to "/dashboard"
   end
 
   def delete
@@ -38,6 +41,6 @@ class ListUsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :gender, :phone_no, :role_id, :max_leaves)
+    params.require(:user).permit(:email, :name, :gender, :phone_no, :role_id, :max_leaves, :image)
   end
 end
