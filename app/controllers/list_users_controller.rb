@@ -25,9 +25,6 @@ class ListUsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    p "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-    p @user.errors
-    p "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     redirect_to "/dashboard"
   end
 
