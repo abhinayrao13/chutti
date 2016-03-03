@@ -5,12 +5,11 @@ class CheckinsController < ApplicationController
   # GET /checkins.json
 
   def checkin
-    if !checked_in
+    if checked_in == false || checked_in == "recheck"
       @current_user_id = current_user.id
       @current_date = Date.today
       @checkin_time = Time.new
       @checkin = Checkin.new(user_id: @current_user_id, date: @current_date, check_in: @checkin_time)
-
       respond_to do |format|
         if @checkin.save
           format.js {}
@@ -25,9 +24,8 @@ class CheckinsController < ApplicationController
     if checked_in == true
       @current_user_id = current_user.id
       @current_date = Date.today
-      @checked_in_user = Checkin.where(user_id: @current_user_id, date: @current_date).first
+      @checked_in_user = Checkin.where(user_id: @current_user_id, date: @current_date).last
       @checkout_time = Time.now
-      p checked_in
       respond_to do |format|
         if @checked_in_user.update(check_out: @checkout_time)
           format.js {}
