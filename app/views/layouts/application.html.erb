@@ -222,7 +222,12 @@
         <li class="<%= 'active' if params[:controller] == 'notices'%>"><a href="/notices"><i class="fa fa-link"></i> <span>Notice Board</span></a></li>
         <!-- Optionally, you can add icons to the links -->
         <li><a href="/notices/new"><i class="fa fa-link"></i> <span>Add Notice</span></a></li>
-        <li class="<%= 'active' if params[:controller] == 'leaves'%>"><a href="/leaves"><i class="fa fa-link"></i> <span>List of Leaves</span></a></li>
+        <% if !admin?%>
+          <li class="<%= 'active' if params[:controller] == 'leaves'%>"><a href="/leaves"><i class="fa fa-link"></i> <span>List of Leaves</span></a></li>
+        <% end%>
+        <% if admin?%>
+          <li class="<%= 'active' if params[:controller] == 'leaves'%>"><a href="<%=leaves_admin_index_path%>"><i class="fa fa-link"></i> <span>List of Leaves</span></a></li>
+        <% end%>
          <% if !admin?%>
           <li><a href="/leaves/new"><i class="fa fa-link"></i> <span>Apply For Leave</span></a></li>
         <%end%>

@@ -1,3 +1,4 @@
+
 <h3>Apply For Leave</h3>
 <div class="box box-primary">
   <div class="container-fluid">
@@ -6,14 +7,18 @@
     <%= form_for(@leave) do |l|%>
       <div>
         <label for="reason">Reason: </label>
-          <%= l.text_area :reason_for_leave ,  id: "reason"%>
+          <%= l.text_area :reason_for_leave ,  id: "reason", class: "form-control", placeholder: "Reason"%>
           <span>
             <%= @leave.errors.messages[:reason_for_leave].first%>
           </span></br></br></br>
       </div>
-      <label for="datetimepicker">Date:</label>
-      <%= l.text_field :leave_date_from , id: 'datetimepicker'%></br></br></br>
-    <%= l.submit "Submit" ,class: "btn btn-success"%></br></br></br></br>
+      <label for="leave_date_picker" >Date:</label>
+      <%= text_field_tag :leave_date_picker, set_leave_dates(@leave), class: "form-control" %>
+      </br></br></br>
+      <%= l.hidden_field :leave_date_from %>
+      <%= l.hidden_field :leave_date_to %>
+    <%= l.submit "Submit" ,class: "btn btn-success"%></br></br></br>
     <% end%>
+
   </div>
 </div>

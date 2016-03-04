@@ -2,17 +2,28 @@ class LeavesController < ApplicationController
   before_action :leaves, only: [:new]
   def index
     if admin?
-      @leave = Leave.where(status: "pending")
+      @leaves = Leave.where(user_id: params[:format])
     else
-      @leave = Leave.where(user_id: current_user.id)
+      @leaves = Leave.where(user_id: current_user.id)
     end
+  end
+  def admin_index
+      @leaves = Leave.where(status: "pending")
+      @users = @leaves.collect{|l| l.user.name}
+      respond_to do |format|
+        puts "responding with json"
+        format.json {render json: {:leaves => @leaves, :users => @users}}
+        format.html {render "/leaves/admin_index"}
+      end
   end
   def new
     @leave = Leave.new
   end
   def create
-    @leave = Leave.create(:reason_for_leave => params[:leave][:reason_for_leave], :user_id => current_user.id, :status => "pending", :leave_date_from => params[:leave][:leave_date_from].split("-")[0],:leave_date_to => params[:leave][:leave_date_from].split("-")[1])
+    @leave = Leave.create(:reason_for_leave => params[:leave][:reason_for_leave], :user_id => current_user.id, :status => "pending", :leave_date_from => params[:leave][:leave_date_from].to_date,:leave_date_to => params[:leave][:leave_date_to].to_date)
       if(@leave.id != nil)
+        @user = @leave.user
+        UserMailer.leave_request_email(@user,@leave).deliver_now
         respond_to do |format|
           format.html {redirect_to "/leaves"}
         end
@@ -26,9 +37,13 @@ class LeavesController < ApplicationController
   end
   def update
     @leave = Leave.find(params[:id])
-    @leave.update(:reason_for_leave => params[:leave][:reason_for_leave], :status => "pending", :leave_date_from => params[:leave][:leave_date_from].split("-")[0],:leave_date_to => params[:leave][:leave_date_from].split("-")[1])
+    @leave.update(:reason_for_leave => params[:leave][:reason_for_leave], :user_id => current_user.id, :status => "pending", :leave_date_from => params[:leave][:leave_date_from].to_date,:leave_date_to => params[:leave][:leave_date_to].to_date)
     respond_to do |format|
-      format.html {redirect_to "/leaves"}
+      if admin?
+        format.html {redirect_to "/leaves/#{@leave.id}/leave_decision"}
+      else
+        format.html {redirect_to "/leaves"}
+     end
     end
   end
   def destroy
@@ -46,16 +61,26 @@ class LeavesController < ApplicationController
   def leave_status_accept
     @leave = Leave.find(params[:id])
     @leave.update(:status => "accepted")
+    @user = @leave.user
+    UserMailer.accepted_email(@user,@leave).deliver_now
     respond_to do |format|
-      format.html {redirect_to "/leaves"}
+      format.html {redirect_to "/leaves/admin_index"}
     end
   end
   def leave_status_decline
     @leave = Leave.find(params[:id])
     @leave.update(:status => "declined")
+    @user = @leave.user
+    UserMailer.declined_email(@user,@leave).deliver_now
     respond_to do |format|
-      format.html {redirect_to "/leaves"}
+      format.html {redirect_to "/leaves/admin_index"}
     end
+  end
+  def leave_decision
+    @leave = Leave.find(params[:id])
+    # respond_to do |format|
+    #   format.html {redirect_to "/leaves/admin_index"}
+    # end
   end
 end
 

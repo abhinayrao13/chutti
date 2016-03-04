@@ -19,7 +19,7 @@
 //= require moment.min
 //= require daterangepicker
 //= require roles
-
+//= require leaves
 //= require icheck.min
 //= require custom
 //= require fullcalendar.min
