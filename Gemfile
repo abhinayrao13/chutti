@@ -47,3 +47,6 @@ end
 
   # Devise is a flexible authentication solution for Rails based on Warden
   gem 'devise'
+  
+  # Dragonfly is a highly customizable ruby gem for handling images and other attachments
+  gem 'dragonfly', '~> 1.0.12'

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  dragonfly_accessor :image
+
   belongs_to :role
   has_many :notices
   has_many :leaves, class_name: "Leave"

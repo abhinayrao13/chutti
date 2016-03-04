@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get "/list_users/:id/employee_leaves_checkinouts" => "list_users#employee_leaves_checkinouts"
 
 
+
   # get "/user_mailer/welcome_email" => "user_mailer#welcome_email"
 
   # The priority is based upon order of creation: first created -> highest priority.

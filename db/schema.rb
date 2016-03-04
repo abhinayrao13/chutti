@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160304063357) do
     t.string   "phone_no"
     t.integer  "role_id"
     t.integer  "max_leaves"
+    t.string   "image_uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
