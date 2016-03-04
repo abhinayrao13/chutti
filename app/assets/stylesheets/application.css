@@ -18,5 +18,7 @@
  * require fullcalendar.print
  *= require_self
  *= require blue
+ * require font-awesome.min.css
+ * require ionicons.min.css
  * require_tree .
  */

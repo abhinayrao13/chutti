@@ -21,8 +21,17 @@ Rails.application.routes.draw do
   post "/list_users" => "list_users#create"
   put "/list_users/:id" => "list_users#update"
   delete "/list_users/:id" => "list_users#delete"
-
+  get "/checkins/checkin" => "checkins#checkin"
+  get "/checkins/checkout" => "checkins#checkout"
   get "/my_notices" => "notices#my_notices"
+
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1311a6f2a45f53299500911bf5b0ea778db869e7
+
+
 
 
   # get "/user_mailer/welcome_email" => "user_mailer#welcome_email"
