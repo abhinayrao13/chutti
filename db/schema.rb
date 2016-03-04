@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160304063357) do
-=======
-ActiveRecord::Schema.define(version: 20160302094432) do
 
   create_table "checkins", force: :cascade do |t|
     t.integer  "user_id"
@@ -22,7 +19,6 @@ ActiveRecord::Schema.define(version: 20160302094432) do
     t.datetime "check_in"
     t.datetime "check_out"
   end
->>>>>>> 1311a6f2a45f53299500911bf5b0ea778db869e7
 
   create_table "leaves", force: :cascade do |t|
     t.string  "reason_for_leave"
@@ -61,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160302094432) do
     t.string   "phone_no"
     t.integer  "role_id"
     t.integer  "max_leaves"
+    t.string   "image_uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

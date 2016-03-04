@@ -25,11 +25,7 @@ Rails.application.routes.draw do
   get "/checkins/checkout" => "checkins#checkout"
   get "/my_notices" => "notices#my_notices"
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 1311a6f2a45f53299500911bf5b0ea778db869e7
 
 
 

@@ -6,6 +6,9 @@ class ListUsersController < ApplicationController
   end
 
   def new
+    if !admin?
+      redirect_to "/dashboard"
+    end
     @user = User.new
   end
 
@@ -14,6 +17,9 @@ class ListUsersController < ApplicationController
   end
 
   def create
+    if !admin?
+      redirect_to "/dashboard"
+    end
     @user = User.new(user_params);
     if @user.save
       UserMailer.welcome_email(@user).deliver_now
@@ -25,8 +31,11 @@ class ListUsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(max_leaves: params[:user][:max_leaves])
-    redirect_to "/list_users"
+    if @user.update(user_params)
+      redirect_to "/dashboard"
+    else
+      render "edit"
+    end
   end
 
   def delete
@@ -39,6 +48,6 @@ class ListUsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :gender, :phone_no, :role_id, :max_leaves)
+    params.require(:user).permit(:email, :name, :gender, :phone_no, :role_id, :max_leaves, :image)
   end
 end
