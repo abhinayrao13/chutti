@@ -10,7 +10,6 @@ function to_check(){
     return false;
   }
 }
-
 function my_btn(l) {
   $.ajax({ url: "/roles/"+ l, method: "delete", datatype: "json",
   success: function (data) {
@@ -19,28 +18,3 @@ function my_btn(l) {
   }
  });
 }
-$(document).ready(function(){
-  $('input[id="datetimepicker"]').daterangepicker({
-    locale: {
-            format: 'DD/MM/YYYY'
-        },
-    "minDate":  $('#current_date').data("todays-date"),
-    startDate: '-2m',
-    endDate: '+2d'
-  });
-  $('#calendar').fullCalendar({
-       // put your options and callbacks here
-       header: {
-         left: 'prev,next today',
-         center: 'title',
-         right: 'month,agendaWeek,agendaDay'
-       },
-       buttonText: {
-         today: 'today',
-         month: 'month',
-         week: 'week',
-         day: 'day'
-       },
-       editable: true
-   });
-})

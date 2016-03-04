@@ -1,0 +1,34 @@
+<div class="box box-primary ">
+  <div class="box-header">
+    <h3 class="box-title">Leaves</h3>
+  </div><!-- /.box-header -->
+  <div class="box-body">
+    <table id="example1" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Reason For Leave</th>
+          <th>Status</th>
+          <th>Leave From</th>
+          <th>Leave TO</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+
+          <tr>
+            <td><%= @leave.id%></td>
+            <td><%= @leave.reason_for_leave%></td>
+            <td><%= @leave.status%></td>
+            <td><%= @leave.leave_date_from%></td>
+            <td><%= @leave.leave_date_to%></td>
+            <td><%= link_to "edit", "/leaves/#{@leave.id}/edit",class: "btn btn-info"%></td>
+            <td><%= link_to "Accept", "/leaves/#{@leave.id}/leave_status_accept", class: "btn btn-info"%></td>
+            <td><%= link_to "Decline", "/leaves/#{@leave.id}/leave_status_decline", class: "btn btn-info"%></td>
+          </tr>
+
+      </tbody>
+    </table>
+  </div><!-- /.box-body -->
+</div><!-- /.box -->

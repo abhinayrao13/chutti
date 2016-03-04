@@ -15,7 +15,7 @@
  *= require skin-blue.min
  *= require daterangepicker
  *= require fullcalendar.min
- *= require fullcalendar.print
+ * require fullcalendar.print
  *= require_self
  *= require blue
  * require font-awesome.min.css

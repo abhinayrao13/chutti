@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303095818) do
+ActiveRecord::Schema.define(version: 20160304063357) do
 
   create_table "checkins", force: :cascade do |t|
     t.integer  "user_id"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20160303095818) do
     t.string  "reason_for_leave"
     t.integer "user_id"
     t.string  "status"
-    t.string  "leave_date_from"
-    t.string  "leave_date_to"
+    t.date    "leave_date_from"
+    t.date    "leave_date_to"
   end
 
   create_table "notices", force: :cascade do |t|

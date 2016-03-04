@@ -5,6 +5,8 @@ Rails.application.routes.draw do
         registrations: 'registrations/registrations'
   }
   resources :dashboard
+  get "/leaves/admin_index" => "leaves#admin_index"
+  get "/leaves/:id/leave_decision" => "leaves#leave_decision"
   resources :leaves
   resources :notices
   resources :roles
@@ -21,10 +23,15 @@ Rails.application.routes.draw do
   delete "/list_users/:id" => "list_users#delete"
   get "/checkins/checkin" => "checkins#checkin"
   get "/checkins/checkout" => "checkins#checkout"
-
-
-
   get "/my_notices" => "notices#my_notices"
+
+
+
+
+
+
+  # get "/user_mailer/welcome_email" => "user_mailer#welcome_email"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
