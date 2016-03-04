@@ -1,11 +1,14 @@
 class ListUsersController < ApplicationController
-  skip_before_action :admin?, only: [:update]
+  before_action :admin?
 
   def index
     @user = User.all
   end
 
   def new
+    if !admin?
+      redirect_to "/dashboard"
+    end
     @user = User.new
   end
 
@@ -14,6 +17,9 @@ class ListUsersController < ApplicationController
   end
 
   def create
+    if !admin?
+      redirect_to "/dashboard"
+    end
     @user = User.new(user_params);
     if @user.save
       redirect_to "/list_users"
@@ -24,8 +30,11 @@ class ListUsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to "/dashboard"
+    if @user.update(user_params)
+      redirect_to "/dashboard"
+    else
+      render "edit"
+    end
   end
 
   def delete
