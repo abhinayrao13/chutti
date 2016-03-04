@@ -36,6 +36,12 @@ class ListUsersController < ApplicationController
     end
     redirect_to "/list_users"
   end
+
+
+  def employee_leaves_checkinouts
+    @leave_details = Leave.where(:user_id => params[:id])
+    @checkin_details = Checkin.where(:user_id => params[:id])
+  end
   private
 
   def user_params

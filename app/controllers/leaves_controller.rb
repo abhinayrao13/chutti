@@ -8,7 +8,10 @@ class LeavesController < ApplicationController
     end
   end
   def admin_index
+      #@leaves = Leave.where(status: "pending")
+      @response = []
       @leaves = Leave.where(status: "pending")
+      @leaves.each {|leave| @response << {title: leave.user.name, start: leave.leave_date_from.to_time.iso8601, end: ((leave.leave_date_to)+ 1).to_time.iso8601 , url: "/leaves/#{leave.id}/leave_decision"} }
       @users = @leaves.collect{|l| l.user.name}
       respond_to do |format|
         puts "responding with json"

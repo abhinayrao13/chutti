@@ -4,7 +4,7 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
           <div class="inner">
-            <h3>20</h3>
+            <h3><%= current_user.max_leaves%></h3>
             <p>Total Leaves</p>
           </div>
           <div class="icon">
@@ -20,7 +20,7 @@
             <p>ACCEPTED lEAVES</p>
           </div>
           <div class="icon">
-            <i class="glyphicon glyphicon-ok-circle"></i>
+            <i class="fa fa-thumbs-o-up"></i>
           </div>
         </div>
       </div><!-- ./col -->
@@ -32,7 +32,7 @@
             <p>Rejected Leaves</p>
           </div>
           <div class="icon">
-            <i class="glyphicon glyphicon-remove-circle"></i>
+            <i class="fa fa-thumbs-o-down"></i>
           </div>
         </div>
       </div><!-- ./col -->
@@ -40,7 +40,7 @@
         <!-- small box -->
         <div class="small-box bg-red">
           <div class="inner">
-            <h3><%= (20-(current_user.leaves.where(:status => "accepted").count))%></h3>
+            <h3><%= ((current_user.max_leaves)-(current_user.leaves.where(:status => "accepted").count))%></h3>
             <p>Leaves Left  </p>
           </div>
           <div class="icon">

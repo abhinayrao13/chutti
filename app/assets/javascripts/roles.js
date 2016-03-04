@@ -10,6 +10,9 @@ function to_check(){
     return false;
   }
 }
+
+
+
 function my_btn(l) {
   $.ajax({ url: "/roles/"+ l, method: "delete", datatype: "json",
   success: function (data) {
