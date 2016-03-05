@@ -7,10 +7,11 @@
       <thead>
         <tr>
           <th>Id</th>
+          <th>Employee Name</th>
           <th>Reason For Leave</th>
           <th>Status</th>
           <th>Leave From</th>
-          <th>Leave TO</th>
+          <th>Leave To</th>
           <th></th>
           <th></th>
         </tr>
@@ -19,6 +20,7 @@
         <% @leave_details.each do |f|%>
           <tr>
             <td><%= f.id%></td>
+            <td><%= f.user.name%></td>
             <td><%= f.reason_for_leave%></td>
             <td><%= f.status%></td>
             <td><%= f.leave_date_from%></td>
@@ -39,9 +41,10 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>User Id</th>
+          <th>Employee Name</th>
           <th>Check In</th>
-          <th>CHeck Out</th>
+          <th>Check Out</th>
+          <th></th>
           <th></th>
           <th></th>
         </tr>
@@ -50,10 +53,9 @@
         <% @checkin_details.each do |f|%>
           <tr>
             <td><%= f.id%></td>
-            <td><%= f.user_id%></td>
+            <td><%= f.user.name %></td>
             <td><%= f.check_in%></td>
             <td><%= f.check_in%></td>
-            <td></td>
           </tr>
         <%end%>
       </tbody>

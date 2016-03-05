@@ -1,4 +1,8 @@
 <% if !admin? %>
+<% if flash[:notice] %>
+  <div class="notice"><h2><%= flash[:notice] %></h2></div>
+<% end %>
+
   <div class="row">
       <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -17,7 +21,7 @@
         <div class="small-box bg-green">
           <div class="inner">
             <h3><%= current_user.leaves.where(:status => "accepted").count%><sup style="font-size: 20px"></sup></h3>
-            <p>ACCEPTED lEAVES</p>
+            <p>Accepted Leaves</p>
           </div>
           <div class="icon">
             <i class="fa fa-thumbs-o-up"></i>
@@ -50,10 +54,10 @@
       </div><!-- ./col -->
     </div><!-- /.row -->
 
-  <%= link_to "create new", "/leaves/new",class: "btn btn-success"%></br></br>
+  <%= link_to "Create new", "/leaves/new",class: "btn btn-primary"%></br></br>
 <%end%>
   <% if admin? %>
-    <%= link_to "Back", "/list_users",class: "btn btn-success"%></br></br>
+    <%= link_to "Back", "/list_users",class: "btn btn-primary"%></br></br>
   <%end%>
   <div class="box box-primary ">
     <div class="box-header">
@@ -67,7 +71,7 @@
             <th>Reason For Leave</th>
             <th>Status</th>
             <th>Leave From</th>
-            <th>Leave TO</th>
+            <th>Leave To </th>
             <th></th>
             <th></th>
           </tr>
@@ -82,8 +86,8 @@
               <td><%= f.leave_date_to%></td>
               <% if !admin? %>
                 <%if f.status == "pending" %>
-                  <td><%= link_to "edit", "/leaves/#{f.id}/edit",class: "btn btn-info"%></td>
-                  <td> <%= link_to "remove", "/leaves/#{f.id}" , method: "delete",class: "btn btn-info"%></td>
+                  <td><%= link_to "", "/leaves/#{f.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit"%></td>
+                  <td> <%= link_to "", "/leaves/#{f.id}" , method: "delete",class: "btn btn-primary glyphicon glyphicon-trash"%></td>
                 <% end%>
               <% end%>
             </tr>

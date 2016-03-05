@@ -31,7 +31,7 @@ class NoticesController < ApplicationController
   def destroy
     @notice = Notice.delete(params[:id])
     respond_to do |format|
-      format.html {redirect_to "/notices"}
+      format.html {redirect_to "/my_notices"}
     end
   end
 

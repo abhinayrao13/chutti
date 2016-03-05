@@ -74,6 +74,12 @@ $(document).ready(function(){
       week: 'week',
       day: 'day'
     },
+    eventLimit: true, // for all non-agenda views
+    views: {
+       agenda: {
+           eventLimit: 6 // adjust to 6 only for agendaWeek/agendaDay
+       }
+     },
       events: $('#calendar').data("leaves-data"),
       eventClick: function(events) {
           if (event.url) {
