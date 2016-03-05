@@ -2,10 +2,7 @@ class ListUsersController < ApplicationController
   before_action :admin, except: [:edit, :update, :cancel]
   before_action :authorized, except: [:delete]
 
-  def index
-    if !admin?
-      redirect_to "/dashboard"
-    end
+  def index 
     @user = User.all
   end
 
