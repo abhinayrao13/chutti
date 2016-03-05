@@ -21,6 +21,7 @@
               <td><%= u.name %></td>
               <td><%= u.email %></td>
               <td><%= (u.max_leaves - u.leaves.where(status: :"accepted").count)%></td>
+              <td><%= u.image_uid%></td>
               <td>
               <% if current_user != u %>
                 <%= link_to "Delete", "/list_users/#{u.id}", method: :delete, class: "btn btn-danger" %></td>
