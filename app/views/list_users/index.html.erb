@@ -24,11 +24,10 @@
               <td><%= u.email %></td>
               <td><%= (u.max_leaves - u.leaves.where(status: :"accepted").count)%></td>
               <td>
-              <% if current_user != u %>
-              <%= link_to "", "/list_users/#{u.id}", method: :delete, class: "btn btn-primary glyphicon glyphicon-trash" %></td>
-              <%= link_to "Delete", "/list_users/#{u.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
-              <% end %>
-             <td>
+                <% if current_user != u %>
+                <%= link_to "", "/list_users/#{u.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary glyphicon glyphicon-trash" %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
