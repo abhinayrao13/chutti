@@ -1,6 +1,9 @@
 class ListUsersController < ApplicationController
 
   def index
+    if !admin?
+      redirect_to "/dashboard"
+    end
     @user = User.all
   end
 
