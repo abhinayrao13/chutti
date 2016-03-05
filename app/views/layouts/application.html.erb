@@ -58,7 +58,7 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="/system/dragonfly/development/<%= current_user.image_uid %>" class="user-image" alt="User Image">
+              <img src="<%= current_user.image.url %>" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs"><%= current_user.name%></span>
             </a>
@@ -117,7 +117,7 @@
       <div class="user-panel">
         <div class="pull-left image">
           <!-- <img src="/assets/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
-          <img src="/system/dragonfly/development/<%= current_user.image_uid %>" class="img-circle" alt="User Image">
+          <img src="<%= current_user.image.url %>" class="img-circle" alt="User Image">
           <!-- <#%= image_tag current_user.image.thumb('160x160#').url if current_user.image_stored? %> -->
         </div>
         <div class="pull-left info">
