@@ -21,12 +21,13 @@ Rails.application.routes.draw do
   post "/list_users" => "list_users#create"
   put "/list_users/:id" => "list_users#update"
   delete "/list_users/:id" => "list_users#delete"
+  delete "/list_users/:id/cancel" => "list_users#cancel"
   get "/checkins/checkin" => "checkins#checkin"
   get "/checkins/checkout" => "checkins#checkout"
   get "/my_notices" => "notices#my_notices"
   get "/list_users/:id/employee_leaves_checkinouts" => "list_users#employee_leaves_checkinouts"
 
-
+  get "*path" => redirect("/404.html")
 
   # get "/user_mailer/welcome_email" => "user_mailer#welcome_email"
 
