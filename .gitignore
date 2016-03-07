@@ -16,3 +16,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+#Ignore Dragonfly Images
+/public/system/dragonfly/

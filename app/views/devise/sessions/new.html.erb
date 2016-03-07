@@ -1,5 +1,9 @@
 <p class="login-box-msg">Sign in</p>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+  <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
   <div class="form-group has-feedback">
     <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control"  %>
     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

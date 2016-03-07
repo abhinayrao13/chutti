@@ -41,9 +41,9 @@
             <td><%= f.id%></td>
             <td><%= f.subject%></td>
             <td><%= f.posted_on%></td>
-            <td><%= link_to "Show", "/notices/#{f.id}",class: "btn btn-primary"%></td>
-            <td> <%= link_to "Edit", "/notices/#{f.id}/edit",class: "btn btn-primary"%></td>
-            <td><%= link_to "Remove", "/notices/#{f.id}" , method: "delete",class: "btn btn-primary"%></td>
+            <td><%= link_to "Show", "/notices/#{f.id}",class: "btn btn-primary "%></td>
+            <td> <%= link_to "", "/notices/#{f.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit"%></td>
+            <td><%= link_to "", "/notices/#{f.id}" , method: "delete",class: "btn btn-primary glyphicon glyphicon-trash"%></td>
           </tr>
         <%end%>
       </tbody>

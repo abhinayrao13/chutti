@@ -29,18 +29,20 @@
     <% @notice.each do |f|%>
       <div class="post">
         <div class="user-block">
-          <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+          <img class="img-circle img-bordered-sm" src="<%= f.user.image.url %>" alt="user image">
           <span class='username'>
             <a href="#"><%=f.user.name%></a>
           </span>
           <span class='description'>posted on - <%=f.posted_on%></span>
         </div><!-- /.user-block -->
         <p>
-            Sub:<%= f.subject%>
+            <b>Subject: &nbsp;</b><%= f.subject%>
         </p>
-        <p>
-          <%= f.content%>
-        </p>
+
+          <p style="padding-left: 50px;">
+            <%= f.content%>
+          </p>
+
       </div><!-- /.post -->
     <% end%>
   </div>

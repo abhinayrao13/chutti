@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    @notice = Notice.all
+    @notice = Notice.all.reverse
   end
 end

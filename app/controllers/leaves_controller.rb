@@ -8,13 +8,19 @@ class LeavesController < ApplicationController
     end
   end
   def admin_index
-      @leaves = Leave.where(status: "pending")
-      @users = @leaves.collect{|l| l.user.name}
-      respond_to do |format|
-        puts "responding with json"
-        format.json {render json: {:leaves => @leaves, :users => @users}}
-        format.html {render "/leaves/admin_index"}
-      end
+      #@leaves = Leave.where(status: "pending")
+      if !admin?
+        redirect_to "/dashboard"
+      else
+        @response = []
+        @leaves = Leave.where(status: "pending")
+        @leaves.each {|leave| @response << {title: leave.user.name, start: leave.leave_date_from.to_time.iso8601, end: ((leave.leave_date_to)+ 1).to_time.iso8601 , url: "/leaves/#{leave.id}/leave_decision"} }
+        @users = @leaves.collect{|l| l.user.name}
+        respond_to do |format|
+          # format.json {render json: {:leaves => @leaves, :users => @users}}
+          format.html {render "/leaves/admin_index"}
+        end
+    end
   end
   def new
     @leave = Leave.new
@@ -31,7 +37,7 @@ class LeavesController < ApplicationController
         render "/leaves/new"
       end
   end
-  def edit
+  def edit    
       @leave = Leave.find(params[:id])
       # render partial: "newedit"
   end
@@ -77,17 +83,23 @@ class LeavesController < ApplicationController
     end
   end
   def leave_decision
-    @leave = Leave.find(params[:id])
+    if !admin?
+      redirect_to "/dashboard"
+    else
+      @leave = Leave.find(params[:id])
     # respond_to do |format|
     #   format.html {redirect_to "/leaves/admin_index"}
     # end
+    end
   end
 end
 
 
 private
 def leaves
-  if current_user.max_leaves == current_user.leaves.where(:status => "accepted").count
+
+  if current_user.max_leaves == (current_user.leaves.where(:status => "accepted").count + current_user.leaves.where(:status => "pending").count)
+    flash.now[:notice] = "Sorry , Your Leaves Have been Completed"
     redirect_to "/leaves"
   end
 end

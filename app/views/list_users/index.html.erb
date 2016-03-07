@@ -1,14 +1,6 @@
   <div class="box box-primary">
     <div class="box-header">
       <h3 class="box-title">List of Employees</h3>
-      <!-- <div class="box-tools">
-        <div class="input-group input-group-sm" style="width: 150px;">
-          <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-            <div class="input-group-btn">
-            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-            </div>
-        </div>
-      </div> -->
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -16,6 +8,7 @@
         <thead>
           <tr>
             <th>Employee Id</th>
+            <th>Profile Picture</th>
             <th>Employee Name</th>
             <th>Email</th>
             <th>Remaining Leaves</th>
@@ -24,18 +17,19 @@
         </thead>
         <tbody>
           <% @user.each do |u| %>
-            <tr data-link= "<%= leaves_path(u.id) %>">
+            <tr data-link= "/list_users/<%= u.id%>/employee_leaves_checkinouts">
               <td><%= u.id %></td>
+              <td><img src="<%= u.image.url %>" class="img-circle" alt="User Image" height=50></td>
               <td><%= u.name %></td>
               <td><%= u.email %></td>
               <td><%= (u.max_leaves - u.leaves.where(status: :"accepted").count)%></td>
               <td>
-              <% if current_user != u %>
-                <%= link_to "Delete", "/list_users/#{u.id}", method: :delete, class: "btn btn-danger" %></td>
-              <% end %>
-             <td>
+                <% if current_user != u %>
+                <%= link_to "", "/list_users/#{u.id}", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary glyphicon glyphicon-trash" %>
+                <% end %>
+              </td>
             </tr>
-          <% end %>-
+          <% end %>
         </tbody>
       </table>
     </div>

@@ -1,14 +1,12 @@
 class ListUsersController < ApplicationController
-  before_action :admin?
+  before_action :admin, except: [:edit, :update, :cancel]
+  before_action :authorized, except: [:delete]
 
-  def index
+  def index 
     @user = User.all
   end
 
   def new
-    if !admin?
-      redirect_to "/dashboard"
-    end
     @user = User.new
   end
 
@@ -17,10 +15,8 @@ class ListUsersController < ApplicationController
   end
 
   def create
-    if !admin?
-      redirect_to "/dashboard"
-    end
-    @user = User.new(user_params);
+    @user = User.new(user_params)
+    @user.image_uid = "default-logo-300x300.png"
     if @user.save
       UserMailer.welcome_email(@user).deliver_now
       redirect_to "/list_users"
@@ -40,14 +36,26 @@ class ListUsersController < ApplicationController
 
   def delete
     @user = User.find(params[:id])
-    if current_user != @user
+    if current_user.id != @user.id
       @user.delete
     end
     redirect_to "/list_users"
   end
+
+  def cancel
+    @user = User.find(params[:id])
+    @user.delete
+    redirect_to "/users/sign_in"
+  end
+
+
+  def employee_leaves_checkinouts
+    @leave_details = Leave.where(:user_id => params[:id])
+    @checkin_details = Checkin.where(:user_id => params[:id])
+  end
   private
 
   def user_params
-    params.require(:user).permit(:email, :name, :gender, :phone_no, :role_id, :max_leaves, :image)
+    params.require(:user).permit(:email, :name, :password, :gender, :phone_no, :role_id, :max_leaves, :image)
   end
 end

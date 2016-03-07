@@ -23,9 +23,9 @@
             <td><%= @leave.status%></td>
             <td><%= @leave.leave_date_from%></td>
             <td><%= @leave.leave_date_to%></td>
-            <td><%= link_to "edit", "/leaves/#{@leave.id}/edit",class: "btn btn-info"%></td>
-            <td><%= link_to "Accept", "/leaves/#{@leave.id}/leave_status_accept", class: "btn btn-info"%></td>
-            <td><%= link_to "Decline", "/leaves/#{@leave.id}/leave_status_decline", class: "btn btn-info"%></td>
+            <td><%= link_to "", "/leaves/#{@leave.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit"%></td>
+            <td><%= link_to "Accept", "/leaves/#{@leave.id}/leave_status_accept", class: "btn btn-primary glyphicon glyphicon-ok"%></td>
+            <td><%= link_to "Decline", "/leaves/#{@leave.id}/leave_status_decline", class: "btn btn-primary glyphicon glyphicon-remove"%></td>
           </tr>
 
       </tbody>

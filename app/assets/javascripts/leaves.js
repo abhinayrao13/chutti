@@ -1,16 +1,3 @@
-var my_events = {
-  events: [
-    {
-      title: 'event 1',
-      start: '2015-01-04',
-      end: '2015-01-06',
-      color: 'tomato'
-    },
-  ]
-};
-
-
-
 var events = []; //The array
 
 $(document).ready(function(){
@@ -30,55 +17,40 @@ $(document).ready(function(){
 
   //$('#calendar').fullCalendar();
 
-  $.ajax({
-    url: "/leaves/admin_index", method: "get", datatype: "json",
-    success: function (leaves,users){console.log (leaves.users);
-       employee_list = leaves.leaves;
-       user_list = leaves.users;
-       for(var i =0; i < employee_list.length; i++)
-       {events.push( {title: user_list[i] , start: employee_list[i].leave_date_from , end: employee_list[i].leave_date_to,url: '/leaves/'+employee_list[i].id+'/leave_decision'})};
-
-       //
-       $('#calendar').fullCalendar({
-         header: {
-           left: 'prev,next today',
-           center: 'title',
-           right: 'month,agendaWeek,agendaDay'
-         },
-         buttonText: {
-           today: 'today',
-           month: 'month',
-           week: 'week',
-           day: 'day'
-         },
-           events:events,
-           // [
-           //     {
-           //         title  : 'event1',
-           //         start  : '2016-03-01',
-           //         url: 'http://google.com/'
-           //     },
-           //     {
-           //         title  : 'event2',
-           //         start  : '2016-01-05',
-           //         end    : '2016-01-07',
-           //         url: 'http://google.com/'
-           //     }
-           // ],
-           eventClick: function(events) {
-               if (event.url) {
-                   window.open(event.url);
-                   return false;
-               }
-           }
-       });
-
-    }
-  });
-
-
-
-
+  // $.ajax({
+  //   url: "/leaves/admin_index", method: "get", datatype: "json",
+  //   success: function (leaves,users){
+  //      alert("Hi");
+  //      console.log (leaves.users);
+  //      employee_list = leaves.leaves;
+  //      user_list = leaves.users;
+  //      for(var i = 0; i < employee_list.length; i++)
+  //      {events.push( {title: user_list[i] , start: employee_list[i].leave_date_from , end: employee_list[i].leave_date_to,url: '/leaves/'+employee_list[i].id+'/leave_decision'})};
+  //
+  //      //
+  //      $('#calendar').fullCalendar({
+  //        header: {
+  //          left: 'prev,next today',
+  //          center: 'title',
+  //          right: 'month,agendaWeek,agendaDay'
+  //        },
+  //        buttonText: {
+  //          today: 'today',
+  //          month: 'month',
+  //          week: 'week',
+  //          day: 'day'
+  //        },
+  //          events:events,
+  //          eventClick: function(events) {
+  //              if (event.url) {
+  //                  window.open(event.url);
+  //                  return false;
+  //              }
+  //          }
+  //      });
+  //
+  //   }
+  // });
 
 
 $("tr[data-link]").click(function() {
@@ -86,3 +58,36 @@ $("tr[data-link]").click(function() {
 });
 
 })
+
+
+$(document).ready(function(){
+
+  $('#calendar').fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay'
+    },
+    buttonText: {
+      today: 'today',
+      month: 'month',
+      week: 'week',
+      day: 'day'
+    },
+    eventLimit: true, // for all non-agenda views
+    views: {
+       agenda: {
+           eventLimit: 6 // adjust to 6 only for agendaWeek/agendaDay
+       }
+     },
+      events: $('#calendar').data("leaves-data"),
+      eventClick: function(events) {
+          if (event.url) {
+              window.open(event.url);
+              return false;
+          }
+      }
+  });
+
+
+});

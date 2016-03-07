@@ -1,0 +1,64 @@
+<div class="box box-primary ">
+  <div class="box-header">
+    <h3 class="box-title">Leaves</h3>
+  </div><!-- /.box-header -->
+  <div class="box-body">
+    <table id="example1" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Employee Name</th>
+          <th>Reason For Leave</th>
+          <th>Status</th>
+          <th>Leave From</th>
+          <th>Leave To</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @leave_details.each do |f|%>
+          <tr>
+            <td><%= f.id%></td>
+            <td><%= f.user.name%></td>
+            <td><%= f.reason_for_leave%></td>
+            <td><%= f.status%></td>
+            <td><%= f.leave_date_from%></td>
+            <td><%= f.leave_date_to%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div><!-- /.box-body -->
+</div><!-- /.box -->
+
+<div class="box box-primary ">
+  <div class="box-header">
+    <h3 class="box-title">Employee Checkin and Checkouts</h3>
+  </div><!-- /.box-header -->
+  <div class="box-body">
+    <table id="example1" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Employee Name</th>
+          <th>Check In</th>
+          <th>Check Out</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @checkin_details.each do |f|%>
+          <tr>
+            <td><%= f.id%></td>
+            <td><%= f.user.name %></td>
+            <td><%= f.check_in%></td>
+            <td><%= f.check_in%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div><!-- /.box-body -->
+</div><!-- /.box -->
