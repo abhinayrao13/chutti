@@ -47,6 +47,10 @@ end
 
   # Devise is a flexible authentication solution for Rails based on Warden
   gem 'devise'
-  
+
   # Dragonfly is a highly customizable ruby gem for handling images and other attachments
   gem 'dragonfly', '~> 1.0.12'
+
+  # Seed Dump is a Rails 4 and 5 plugin that adds a rake task named db:seed:dump.
+  # It allows you to create seed data files from the existing data in your database.
+  gem 'seed_dump'
