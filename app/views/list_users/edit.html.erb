@@ -4,43 +4,43 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <%= form_for(@user, url: "/list_users/#{current_user.id}", method: :put, html: {:multipart => true }) do |f| %>
-    <div class="box-body">
-      <div class="form-group">
-        <label>Name</label>
-        <%= f.text_field :name, autofocus: true, placeholder: "Enter Name", class: "form-control" %>
-        <%= error_messages!(@user, :name) %>
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <%= f.text_field :email, placeholder: "Enter Email", class: "form-control" %>
-        <%= error_messages!(@user, :email) %>
-      </div>
-      <div class="form-group">
-        <lable><b>Password</b></lable><br /><br />
-        <%= link_to "Change your password", edit_user_registration_path %>
-      </div>
-      <div class="form-group">
-        <%= radio_button("user", "gender", "male", :checked => true) %>
-        <%= f.label :male %>
-        <%= radio_button("user", "gender", "female") %>
-        <%= f.label :female %>
-      </div>
-      <div class="form-group">
-        <label>Phone</label>
-        <%= f.text_field :phone_no, placeholder: "Enter Phone number", class: "form-control" %>
-        <%= error_messages!(@user, :phone_no) %>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputFile">Upload Photo</label>
-        <%= f.file_field :image %>
-        <p class="help-block">Please attach your photo to set as profile picture.</p>
-      </div>
-    <!-- /.box-body -->
-    <div class="box-footer">
-      <%= f.submit "Update", :class => "btn btn-primary" %>
-      <%= link_to "Back", "/dashboard", class: "btn btn-default pull-right" %>
+  <div class="box-body">
+    <%= form_for(@user, url: "/list_users/#{current_user.id}", method: :put, html: {:multipart => true }) do |f| %>
+    <div class="form-group">
+      <label>Name</label>
+      <%= f.text_field :name, autofocus: true, placeholder: "Enter Name", class: "form-control" %>
+      <%= error_messages!(@user, :name) %>
     </div>
+    <div class="form-group">
+      <label>Email</label>
+      <%= f.text_field :email, placeholder: "Enter Email", class: "form-control" %>
+      <%= error_messages!(@user, :email) %>
+    </div>
+    <div class="form-group">
+      <lable><b>Password</b></lable><br /><br />
+      <%= link_to "Change your password", edit_user_registration_path %>
+    </div>
+    <div class="form-group">
+      <%= radio_button("user", "gender", "male", :checked => true) %>
+      <%= f.label :male %>
+      <%= radio_button("user", "gender", "female") %>
+      <%= f.label :female %>
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <%= f.text_field :phone_no, placeholder: "Enter Phone number", class: "form-control" %>
+      <%= error_messages!(@user, :phone_no) %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">Upload Photo</label>
+      <%= f.file_field :image %>
+      <p class="help-block">Please attach your photo to set as profile picture.</p>
+    </div>
+  <!-- /.box-body -->
+  <div class="box-footer">
+    <%= f.submit "Update", :class => "btn btn-primary" %>
+    <%= link_to "Back", "/dashboard", class: "btn btn-default pull-right" %>
+  </div>
   <% end %>
   <div class="box-footer">
     <% if !admin? %>

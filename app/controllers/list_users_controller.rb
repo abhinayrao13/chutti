@@ -1,6 +1,6 @@
 class ListUsersController < ApplicationController
   before_action :admin, except: [:edit, :update, :cancel, :employee_leaves_checkinouts]
-  before_action :authorized, except: [:delete, :index, :new, :employee_leaves_checkinouts]
+  before_action :authorized, except: [:create, :delete, :index, :new, :employee_leaves_checkinouts]
   def index
     @user = User.all
   end
@@ -17,6 +17,7 @@ class ListUsersController < ApplicationController
     @user = User.new(user_params)
     @user.image_uid = "icon-user-default.png"
     if @user.save
+      flash[:notice] = "New Employee successfully added."
       UserMailer.welcome_email(@user).deliver_now
       redirect_to "/list_users"
     else
@@ -27,6 +28,7 @@ class ListUsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:notice] = "Details Updated Successfully."
       redirect_to "/dashboard"
     else
       render "edit"
@@ -37,6 +39,7 @@ class ListUsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.id != @user.id
       @user.delete
+      flash[:notice] = "Deleted Successfully."
     end
     redirect_to "/list_users"
   end
