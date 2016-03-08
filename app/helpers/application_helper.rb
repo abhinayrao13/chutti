@@ -16,8 +16,6 @@ module ApplicationHelper
 
   def authorized
    if current_user.id != params[:id].to_i
-     p current_user.id
-     p params[:id].to_i
      redirect_to "/dashboard"
    end
  end
