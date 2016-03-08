@@ -1,5 +1,5 @@
 module ApplicationHelper
-  #checks if current user is signed in
+  #checks if current user is admin
   def admin?
     if current_user.role.user_role.eql? "admin"
       return true

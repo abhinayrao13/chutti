@@ -1,7 +1,6 @@
 class ListUsersController < ApplicationController
   before_action :admin, except: [:edit, :update, :cancel, :employee_leaves_checkinouts]
   before_action :authorized, except: [:delete, :index, :new, :employee_leaves_checkinouts]
-
   def index
     @user = User.all
   end
@@ -16,7 +15,7 @@ class ListUsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.image_uid = "default-logo-300x300.png"
+    @user.image_uid = "icon-user-default.png"
     if @user.save
       UserMailer.welcome_email(@user).deliver_now
       redirect_to "/list_users"
