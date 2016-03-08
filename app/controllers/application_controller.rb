@@ -16,12 +16,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # Permit the devise parameters.
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :name, :gender, :phone_no, :role_id, :max_leaves, :image) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:password, :password_confirmation, :current_password) }
   end
 
+  # Takes default layout as sign_in if user is not signed in.
   def layout_by_resource
     if devise_controller? && !user_signed_in?
       "sign_in"

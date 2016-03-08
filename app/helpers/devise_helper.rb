@@ -1,4 +1,5 @@
 module DeviseHelper
+  # over writing devise method
   def devise_error_messages!
     return "" if resource.errors.empty?
 
@@ -21,6 +22,7 @@ module DeviseHelper
     resource.errors.empty? ? false : true
   end
 
+  # modified version of devise_error_messages which takes resource and form field as input to display error messages
   def error_messages!(resource, field)
     if resource.errors[field].empty?
       return ""
