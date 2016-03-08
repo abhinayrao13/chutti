@@ -28,11 +28,7 @@ Chutti is a web application which helps in managing Employee information.
 
 * Open console and run the following commands.
 
-* First create a new directory to hold the chutti app files -> <tt>mkdir chutti</tt>
-
-* Change directory to chutti <tt>cd chutti</tt>
-
-* Now download the project files from github -> <tt>git clone https://github.com/abhinayrao13/chutti.git</tt>
+* Download the project files from github <tt>git clone https://github.com/abhinayrao13/chutti.git</tt>
 
 * <tt>bundle install</tt> to install all the gems required for chutti app
 
