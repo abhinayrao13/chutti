@@ -26,9 +26,17 @@ Chutti is a web application which helps in managing Employee information.
 
 == Installation procedure
 
-* In console run <tt>rake db:migrate</tt> to create required database tables.
+* Open console and run the following commands.
 
-* run <tt>rake db:seed</tt> to get sample data(as there is no sign_up option demo data is required).
+* First create a new directory to hold the chutti app files -> <tt>mkdir chutti</tt> <tt>cd chutti</tt>
+
+* Now download the project files from github -> </tt>git clone https://github.com/abhinayrao13/chutti.git</tt>
+
+* <tt>bundle install</tt> to install all the gems required for chutti app
+
+* <tt>rake db:migrate</tt> to create required database tables.
+
+* <tt>rake db:seed</tt> to get sample data(as there is no sign_up option demo data is required).
   You can delete unwanted data from admin module later.
 
 Please feel free to contact if you find any bugs in application.
