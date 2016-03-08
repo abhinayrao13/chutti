@@ -18,4 +18,4 @@
 /tmp
 
 #Ignore Dragonfly Images
-#/public/system/dragonfly/
+/public/system/dragonfly/
