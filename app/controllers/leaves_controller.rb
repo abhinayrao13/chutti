@@ -37,7 +37,7 @@ class LeavesController < ApplicationController
         render "/leaves/new"
       end
   end
-  def edit
+  def edit    
       @leave = Leave.find(params[:id])
       # render partial: "newedit"
   end
@@ -83,10 +83,14 @@ class LeavesController < ApplicationController
     end
   end
   def leave_decision
-    @leave = Leave.find(params[:id])
+    if !admin?
+      redirect_to "/dashboard"
+    else
+      @leave = Leave.find(params[:id])
     # respond_to do |format|
     #   format.html {redirect_to "/leaves/admin_index"}
     # end
+    end
   end
 end
 
@@ -95,7 +99,7 @@ private
 def leaves
 
   if current_user.max_leaves == (current_user.leaves.where(:status => "accepted").count + current_user.leaves.where(:status => "pending").count)
-    flash[:notice] = "Sorry , Your Leaves Have been Completed"
+    flash.now[:notice] = "Sorry , Your Leaves Have been Completed"
     redirect_to "/leaves"
   end
 end
