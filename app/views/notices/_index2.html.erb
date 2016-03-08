@@ -23,6 +23,10 @@
     <%= link_to "Add Notice", "/notices/new",class: "btn btn-success"%></br></br>
   </div>
 </div> -->
+
+<% if flash[:notice] %>
+  <div class="box box-primary"><br /><div class="container-fluid"><%= flash[:notice] %></div><br /></div>
+<% end %>
 <div class="box box-primary">
   <div  id="table", class="container-fluid" >
   </br>

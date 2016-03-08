@@ -155,7 +155,7 @@
           <li class="<%= 'active' if (params[:controller] == 'leaves' && params[:action] == 'new')%>" ><a href="/leaves/new"><i class="fa fa-link"></i> <span>Apply For Leave</span></a></li>
         <%end%>
         <% if admin?%>
-          <li class="<%= 'active' if (params[:controller] == 'list_users' && params[:action] == 'new')%>" ><a href="/list_users/new"><i class="fa fa-link"></i> <span>Add An Employee</span></a></li>
+          <li class="<%= 'active' if (params[:controller] == 'list_users' && params[:action] == 'new')%>" ><a href="/list_users/new"><i class="fa fa-link"></i> <span>Add New Employee</span></a></li>
           <li class="<%= 'active' if (params[:controller] == 'list_users' && params[:action] == 'index')%>" ><a href="/list_users"><i class="fa fa-link"></i> <span>Employee List</span></a></li>
           <li class="<%= 'active' if (params[:controller] == 'roles' && params[:action] == 'index')%>" ><a href="/roles"><i class="fa fa-link"></i> <span>Roles</span></a></li>
         <%end%>
