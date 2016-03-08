@@ -20,14 +20,14 @@ Checkin.create!([
   {user_id: 1, date: "2016-03-08", check_in: "2016-03-08 01:21:10", check_out: "2016-03-08 01:21:12"}
 ])
 Leave.create!([
-  {reason_for_leave: "headacehe", user_id: 2, status: "accepted", leave_date_from: "2016-03-04", leave_date_to: "2016-03-05"},
-  {reason_for_leave: "fever", user_id: 3, status: "declined", leave_date_from: "2016-03-23", leave_date_to: "2016-03-26"},
-  {reason_for_leave: "back pain", user_id: 4, status: "accepted", leave_date_from: "2016-05-07", leave_date_to: "2016-05-10"},
-  {reason_for_leave: "stomach pain", user_id: 5, status: "accepted", leave_date_from: "2016-04-04", leave_date_to: "2016-04-07"},
-  {reason_for_leave: "sister marriage", user_id: 2, status: "declined", leave_date_from: "2016-04-04", leave_date_to: "2016-04-07"},
-  {reason_for_leave: "brother marriage", user_id: 3, status: "accepted", leave_date_from: "2016-04-05", leave_date_to: "2016-04-08"},
+  {reason_for_leave: "headacehe", user_id: 2, status: "pending", leave_date_from: "2016-03-04", leave_date_to: "2016-03-05"},
+  {reason_for_leave: "fever", user_id: 3, status: "pending", leave_date_from: "2016-03-23", leave_date_to: "2016-03-26"},
+  {reason_for_leave: "back pain", user_id: 4, status: "pending", leave_date_from: "2016-05-07", leave_date_to: "2016-05-10"},
+  {reason_for_leave: "stomach pain", user_id: 5, status: "pending", leave_date_from: "2016-04-04", leave_date_to: "2016-04-07"},
+  {reason_for_leave: "sister marriage", user_id: 2, status: "pending", leave_date_from: "2016-04-04", leave_date_to: "2016-04-07"},
+  {reason_for_leave: "brother marriage", user_id: 3, status: "pending", leave_date_from: "2016-04-05", leave_date_to: "2016-04-08"},
   {reason_for_leave: "grand father expired", user_id: 6, status: "pending", leave_date_from: "2016-04-05", leave_date_to: "2016-04-08"},
-  {reason_for_leave: "personal", user_id: 5, status: "accepted", leave_date_from: "2016-04-04", leave_date_to: "2016-04-06"}
+  {reason_for_leave: "personal", user_id: 5, status: "pending", leave_date_from: "2016-04-04", leave_date_to: "2016-04-06"}
 ])
 Notice.create!([
   {subject: "salutation", content: "hello all, good eveng", user_id: 2, posted_on: "2016-03-04"},
