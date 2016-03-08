@@ -1,10 +1,10 @@
 == README
 
-<h1>Chutti</h1>
+== Chutti
 
 Chutti is a web application which helps in managing Employee information.
 
-Features include :-
+== Features include :-
 
   * Employee Leaves management.
 
@@ -16,7 +16,7 @@ Features include :-
 
   * and many more...
 
-<h1>Requirements</h1>
+== Requirements
 
 * Ruby version - 2.3.0
 
@@ -24,7 +24,7 @@ Features include :-
 
 * Database - sqlite3
 
-<h1>Installation procedure</h1>
+== Installation procedure
 
 * In console run <tt>'rake db:migrate'</tt> to create required database tables.
 
