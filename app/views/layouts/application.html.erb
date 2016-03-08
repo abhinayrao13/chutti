@@ -125,7 +125,7 @@
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
-      </div></br></br>
+      </div>
 
       <!-- search form (Optional) -->
       <!-- <form action="#" method="get" class="sidebar-form">
@@ -141,25 +141,25 @@
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
-        <li class="header">HEADER</li>
-        <li class="<%= 'active' if (params[:controller] == 'notices' && params[:action] == 'index')%>"><a href="/notices"><i class="fa fa-link"></i> <span>Notice Board</span></a></li>
+        <li class="header">MENU</li>
+        <li class="<%= 'active' if (params[:controller] == 'notices' && params[:action] == 'index')%>"><a href="/notices"><i class="glyphicon glyphicon-pushpin"></i> <span>Notice Board</span></a></li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="<%= 'active' if (params[:controller] == 'notices' && params[:action] == 'new')%>"><a href="/notices/new"><i class="fa fa-link"></i> <span>Add Notice</span></a></li>
+        <li class="<%= 'active' if (params[:controller] == 'notices' && params[:action] == 'new')%>"><a href="/notices/new"><i class="glyphicon glyphicon-edit"></i> <span>Add Notice</span></a></li>
         <% if !admin?%>
-          <li class="<%= 'active' if params[:controller] == 'leaves' && params[:action] == 'index'%>"><a href="/leaves"><i class="fa fa-link"></i> <span>List of Leaves</span></a></li>
+          <li class="<%= 'active' if params[:controller] == 'leaves' && params[:action] == 'index'%>"><a href="/leaves"><i class="glyphicon glyphicon-list-alt"></i> <span>List of Leaves</span></a></li>
         <% end%>
         <% if admin?%>
-          <li class="<%= 'active' if params[:controller] == 'leaves' %>"><a href="<%=leaves_admin_index_path%>"><i class="fa fa-link"></i> <span>List of Leaves</span></a></li>
+          <li class="<%= 'active' if params[:controller] == 'leaves' %>"><a href="<%=leaves_admin_index_path%>"><i class="glyphicon glyphicon-list-alt"></i> <span>List Of Leaves</span></a></li>
         <% end%>
          <% if !admin?%>
-          <li class="<%= 'active' if (params[:controller] == 'leaves' && params[:action] == 'new')%>" ><a href="/leaves/new"><i class="fa fa-link"></i> <span>Apply For Leave</span></a></li>
+          <li class="<%= 'active' if (params[:controller] == 'leaves' && params[:action] == 'new')%>" ><a href="/leaves/new"><i class="glyphicon glyphicon-ok-sign"></i> <span>Apply For Leave</span></a></li>
         <%end%>
         <% if admin?%>
-          <li class="<%= 'active' if (params[:controller] == 'list_users' && params[:action] == 'new')%>" ><a href="/list_users/new"><i class="fa fa-link"></i> <span>Add An Employee</span></a></li>
-          <li class="<%= 'active' if (params[:controller] == 'list_users' && params[:action] == 'index')%>" ><a href="/list_users"><i class="fa fa-link"></i> <span>Employee List</span></a></li>
-          <li class="<%= 'active' if (params[:controller] == 'roles' && params[:action] == 'index')%>" ><a href="/roles"><i class="fa fa-link"></i> <span>Roles</span></a></li>
+          <li class="<%= 'active' if (params[:controller] == 'list_users' && params[:action] == 'new')%>" ><a href="/list_users/new"><i class="glyphicon glyphicon-plus-sign"></i> <span>Add New Employee</span></a></li>
+          <li class="<%= 'active' if (params[:controller] == 'list_users' && params[:action] == 'index')%>" ><a href="/list_users"><i class="glyphicon glyphicon-sort-by-alphabet"></i> <span>Employee List</span></a></li>
+          <li class="<%= 'active' if (params[:controller] == 'roles' && params[:action] == 'index')%>" ><a href="/roles"><i class="glyphicon glyphicon-sort-by-attributes-alt"></i> <span>Roles</span></a></li>
         <%end%>
-          <li class="<%= 'active' if (params[:controller] == 'notices' && params[:action] == 'my_notices')%>" ><a href="/my_notices"><i class="fa fa-link"></i> <span>My Notices</span></a></li>
+          <li class="<%= 'active' if (params[:controller] == 'notices' && params[:action] == 'my_notices')%>" ><a href="/my_notices"><i class="glyphicon glyphicon-share"></i> <span>My Notices</span></a></li>
 
           <!-- <%= link_to('Sign out', destroy_user_session_path, :method => :delete, :class=> "btn btn-default btn-flat") %> -->
 

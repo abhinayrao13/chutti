@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         registrations: 'registrations/registrations'
   }
-  resources :dashboard
+  get "/dashboard" => "dashboard#index"
   get "/leaves/admin_index" => "leaves#admin_index"
   get "/leaves/:id/leave_decision" => "leaves#leave_decision"
   resources :leaves

@@ -1,6 +1,5 @@
 class RolesController < ApplicationController
   before_action :admin
-
   def index
     @role = Role.all
   end
@@ -12,7 +11,6 @@ class RolesController < ApplicationController
     redirect_to "/roles"
   end
   def destroy
-
     @role = Role.destroy(params[:id])
     respond_to do |format|
       puts "responding with json"

@@ -1,53 +1,37 @@
-<!-- <div class="box box-primary">
-  <div  id="table", class="container-fluid" >
-    <div class="row">
-    </br>
-      <div class="col-sm-1"><Strong>Id</strong></div>
-      <div class="col-sm-2"><Strong>Subject</Strong></div>
-    </div></br>
-    <div class="row">
-    <% @notice.each do |f|%>
-      <div class="col-sm-11">
-        <div class="col-sm-1"><%= f.id%></div>
-        <div class="col-sm-2"><%= f.subject%></div>
-          <div class="col-sm-1"><%= link_to "show", "/notices/#{f.id}",class: "btn btn-info"%></div>
-          <div class="col-sm-1"><%= link_to "edit", "/notices/#{f.id}/edit",class: "btn btn-info"%></div>
-          <div class="col-sm-1"><%= link_to "remove", "/notices/#{f.id}" , method: "delete",class: "btn btn-info"%></div>
-        </br></br>
-      </div>
-    <% end%>
-      </div>
-    <%= link_to "Add Notice", "/notices/new",class: "btn btn-success"%></br></br>
-  </div>
-</div> -->
-
-
-<div class="box box-primary">
-  <div class="box-header">
-    <h3 class="box-title">My Notices</h3>
-  </div><!-- /.box-header -->
-  <div class="box-body">
-    <table id="example1" class="table table-striped">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Subject</th>
-          <th>Posted On</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @notice.each do |f|%>
+<% if @notice.count != 0%>
+  <div class="box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">My Notices</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+      <table id="example1" class="table table-striped">
+        <thead>
           <tr>
-            <td><%= f.id%></td>
-            <td><%= f.subject%></td>
-            <td><%= f.posted_on%></td>
-            <td><%= link_to "Show", "/notices/#{f.id}",class: "btn btn-primary "%></td>
-            <td> <%= link_to "", "/notices/#{f.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit"%></td>
-            <td><%= link_to "", "/notices/#{f.id}" , method: "delete",class: "btn btn-primary glyphicon glyphicon-trash"%></td>
+            <th>Id</th>
+            <th>Subject</th>
+            <th>Posted On</th>
           </tr>
-        <%end%>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @notice.each do |f|%>
+            <tr>
+              <td><%= f.id%></td>
+              <td><%= f.subject%></td>
+              <td><%= f.posted_on%></td>
+              <td><%= link_to "Show", "/notices/#{f.id}",class: "btn btn-primary "%></td>
+              <td> <%= link_to "", "/notices/#{f.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit"%></td>
+              <td><%= link_to "", "/notices/#{f.id}" , method: "delete",class: "btn btn-primary glyphicon glyphicon-trash"%></td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
 
-  </div><!-- /.box-body -->
-</div><!-- /.box -->
+    </div><!-- /.box-body -->
+  </div><!-- /.box -->
+<%else%>
+  <div class="box box-primary ">
+    <div class="box-header">
+      <h3 class="box-title">There Are No Notices</h3>
+    </div>
+  </div>
+<% end%>

@@ -1,6 +1,6 @@
 <% if !admin? %>
 <% if flash[:notice] %>
-  <div class="notice"><h2><%= flash[:notice] %></h2></div>
+  <div class="box box-primary"><br /><div class="container-fluid"><%= flash[:notice] %></div><br /></div>
 <% end %>
 
   <div class="row">
@@ -12,7 +12,7 @@
             <p>Total Leaves</p>
           </div>
           <div class="icon">
-            <i class="ion ion-happy"></i>
+            <i class="fa fa-hourglass"></i>
           </div>
         </div>
       </div><!-- ./col -->
@@ -24,7 +24,7 @@
             <p>Accepted Leaves</p>
           </div>
           <div class="icon">
-            <i class="fa fa-thumbs-o-up"></i>
+              <i class="fa fa-thumbs-o-up"></i>
           </div>
         </div>
       </div><!-- ./col -->
@@ -48,7 +48,7 @@
             <p>Leaves Left  </p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="fa fa-hourglass-half"></i>
           </div>
         </div>
       </div><!-- ./col -->
@@ -59,6 +59,8 @@
   <% if admin? %>
     <%= link_to "Back", "/list_users",class: "btn btn-primary"%></br></br>
   <%end%>
+
+<% if @leaves.count != 0%>
   <div class="box box-primary ">
     <div class="box-header">
       <h3 class="box-title">Leaves</h3>
@@ -96,3 +98,10 @@
       </table>
     </div><!-- /.box-body -->
   </div><!-- /.box -->
+  <%else%>
+    <div class="box box-primary ">
+      <div class="box-header">
+        <h3 class="box-title">There Are No Leaves</h3>
+      </div>
+    </div>
+  <% end%>

@@ -1,5 +1,5 @@
 module ApplicationHelper
-  #checks if current user is signed in
+  # checks if current user is admin
   def admin?
     if current_user.role.user_role.eql? "admin"
       return true
@@ -7,18 +7,22 @@ module ApplicationHelper
       return false
     end
   end
-
+  # redirects to dashboard if current user is not admin
   def admin
     if !current_user.role.user_role.eql? "admin"
+      flash[:notice] = "You Are Not Authorized To Do This"
       redirect_to "/dashboard"
     end
   end
 
+  # checks if the user is authorized to perform any action
   def authorized
    if current_user.id != params[:id].to_i
+     flash[:notice] = "You Are Not Authorized To Do This"
      redirect_to "/dashboard"
    end
  end
+
 
 # def fsdfsdf(leave)
 #   if leave.leave_date_from.present?

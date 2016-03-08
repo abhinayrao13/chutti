@@ -8,6 +8,7 @@ class NoticesController < ApplicationController
   def create
     @notice = Notice.create(:subject => params[:notice][:subject ], :content => params[:notice][:content], :user_id => current_user.id, :posted_on => (Time.now.to_s.split(" ")[0]))
     if(@notice.id != nil)
+      flash[:notice] = "Notice Created Successfully"
       respond_to do |format|
         format.html {redirect_to "/notices"}
       end
@@ -16,7 +17,11 @@ class NoticesController < ApplicationController
     end
   end
   def edit
-    @notice = Notice.find(params[:id])
+    if current_user.id != (Notice.find(params[:id])).user_id
+       redirect_to "/dashboard"
+    else
+      @notice = Notice.find(params[:id])
+    end
   end
   def show
     @notice = Notice.find(params[:id])
@@ -24,14 +29,19 @@ class NoticesController < ApplicationController
   def update
     @notice = Notice.find(params[:id])
     @notice.update(:subject => params[:notice][:subject ], :content => params[:notice][:content], :user_id => current_user.id, :posted_on => (Time.now.to_s.split(" ")[0]))
+    flash[:notice] = "Notice Updated Successfully"
     respond_to do |format|
       format.html {redirect_to "/my_notices"}
     end
   end
   def destroy
-    @notice = Notice.delete(params[:id])
-    respond_to do |format|
-      format.html {redirect_to "/my_notices"}
+    if current_user.id != (Notice.find(params[:id])).user_id
+       redirect_to "/dashboard"
+    else
+      @notice = Notice.delete(params[:id])
+      respond_to do |format|
+        format.html {redirect_to "/my_notices"}
+      end
     end
   end
 

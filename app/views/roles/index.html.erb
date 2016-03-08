@@ -1,20 +1,22 @@
-
-<h1>Roles List</h1>
 <div class="box box-primary">
+  <div class="box-header">
+    <h3 class="box-title">Roles List</h3>
+  </div><!-- /.box-header -->
   <div class="container-fluid" >
-    </br>
     <div  id="table", class="container-fluid" >
       <div class="row">
       </br>
         <div class="col-sm-1"><Strong>Id</strong></div>
-        <div class="col-sm-1"><Strong>UserRole</Strong></div>
+        <div class="col-sm-1"><Strong>Role</Strong></div>
       </div></br>
       <%@role.each do |r|%>
         <div class="row">
           <div class="col-sm-1"><%= r.id%></div>
           <div class="col-sm-1"><%= r.user_role%></div>
-          <div class="col-sm-1"><%= link_to "", "/roles/#{r.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit"%></div>
-          <button type="button" onclick = "my_btn(<%= r.id%>)" class="btn btn-primary glyphicon glyphicon-trash"></button></br></br>
+          <% if r.user_role != "admin"%>
+            <div class="col-sm-1"><%= link_to "", "/roles/#{r.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit"%></div>
+            <button type="button" onclick = "my_btn(<%= r.id%>)" class="btn btn-primary glyphicon glyphicon-trash"></button>
+          <%end%></br></br>
         </div>
       <% end%>
       <%= link_to "Create new", "/roles/new", class: "btn btn-primary"%></br></br>

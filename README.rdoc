@@ -1,28 +1,42 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+== Chutti
 
-Things you may want to cover:
+Chutti is a web application which helps in managing Employee information.
 
-* Ruby version
+== Features include :-
 
-* System dependencies
+  * Employee Leaves management.
 
-* Configuration
+  * Employee Check in and Checkouts.
 
-* Database creation
+  * Universal Notice Board.
 
-* Database initialization
+  * Admin module for managing Employee's and Employee details.
 
-* How to run the test suite
+  * and many more...
 
-* Services (job queues, cache servers, search engines, etc.)
+== Requirements
 
-* Deployment instructions
+* Ruby version - 2.3.0
 
-* ...
+* Rails version - 4.2.5.1
 
+* Database - sqlite3
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== Installation procedure
+
+* Open console and run the following commands.
+
+* Download the project files from github <tt>git clone https://github.com/abhinayrao13/chutti.git</tt>
+
+* <tt>bundle install</tt> to install all the gems required for chutti app
+
+* <tt>rake db:migrate</tt> to create required database tables.
+
+* <tt>rake db:seed</tt> to get sample data(as there is no sign_up option demo data is required).
+  You can delete unwanted data from admin module later.
+
+Please feel free to contact if you find any bugs in application.
+
+Thank You!
