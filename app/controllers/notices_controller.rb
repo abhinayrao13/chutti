@@ -10,6 +10,7 @@ class NoticesController < ApplicationController
   def create
     @notice = Notice.create(:subject => params[:notice][:subject ], :content => params[:notice][:content], :user_id => current_user.id, :posted_on => (Time.now.to_s.split(" ")[0]))
     if(@notice.id != nil)
+      flash[:notice] = "Notice Created Successfully"
       respond_to do |format|
         format.html {redirect_to "/notices"}
       end
@@ -30,6 +31,7 @@ class NoticesController < ApplicationController
   def update
     @notice = Notice.find(params[:id])
     @notice.update(:subject => params[:notice][:subject ], :content => params[:notice][:content], :user_id => current_user.id, :posted_on => (Time.now.to_s.split(" ")[0]))
+    flash[:notice] = "Notice Updated Successfully"
     respond_to do |format|
       format.html {redirect_to "/my_notices"}
     end

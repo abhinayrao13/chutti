@@ -149,7 +149,7 @@
           <li class="<%= 'active' if params[:controller] == 'leaves' && params[:action] == 'index'%>"><a href="/leaves"><i class="fa fa-link"></i> <span>List of Leaves</span></a></li>
         <% end%>
         <% if admin?%>
-          <li class="<%= 'active' if params[:controller] == 'leaves' %>"><a href="<%=leaves_admin_index_path%>"><i class="fa fa-link"></i> <span>List of Leaves</span></a></li>
+          <li class="<%= 'active' if params[:controller] == 'leaves' %>"><a href="<%=leaves_admin_index_path%>"><i class="fa fa-link"></i> <span>List Of Leaves</span></a></li>
         <% end%>
          <% if !admin?%>
           <li class="<%= 'active' if (params[:controller] == 'leaves' && params[:action] == 'new')%>" ><a href="/leaves/new"><i class="fa fa-link"></i> <span>Apply For Leave</span></a></li>
