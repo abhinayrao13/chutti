@@ -1,4 +1,6 @@
 class NoticesController < ApplicationController
+
+  # before_action :authorized, only: [ :edit]
   def index
     @notice = Notice.all.reverse
   end
@@ -16,7 +18,11 @@ class NoticesController < ApplicationController
     end
   end
   def edit
-    @notice = Notice.find(params[:id])
+    if current_user.id != (Notice.find(params[:id])).user_id
+       redirect_to "/dashboard"
+    else
+      @notice = Notice.find(params[:id])
+    end
   end
   def show
     @notice = Notice.find(params[:id])
@@ -29,9 +35,13 @@ class NoticesController < ApplicationController
     end
   end
   def destroy
-    @notice = Notice.delete(params[:id])
-    respond_to do |format|
-      format.html {redirect_to "/my_notices"}
+    if current_user.id != (Notice.find(params[:id])).user_id
+       redirect_to "/dashboard"
+    else
+      @notice = Notice.delete(params[:id])
+      respond_to do |format|
+        format.html {redirect_to "/my_notices"}
+      end
     end
   end
 

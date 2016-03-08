@@ -1,6 +1,6 @@
 class ListUsersController < ApplicationController
-  before_action :admin, except: [:edit, :update, :cancel]
-  before_action :authorized, except: [:delete, :index, :new]
+  before_action :admin, except: [:edit, :update, :cancel, :employee_leaves_checkinouts]
+  before_action :authorized, except: [:delete, :index, :new, :employee_leaves_checkinouts]
 
   def index
     @user = User.all
@@ -53,6 +53,8 @@ class ListUsersController < ApplicationController
     @leave_details = Leave.where(:user_id => params[:id])
     @checkin_details = Checkin.where(:user_id => params[:id])
   end
+
+
   private
 
   def user_params

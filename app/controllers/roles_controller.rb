@@ -12,7 +12,6 @@ class RolesController < ApplicationController
     redirect_to "/roles"
   end
   def destroy
-
     @role = Role.destroy(params[:id])
     respond_to do |format|
       puts "responding with json"

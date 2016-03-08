@@ -1,5 +1,6 @@
 class LeavesController < ApplicationController
   before_action :leaves, only: [:new]
+  before_action :admin, only: [:leave_decision]
   def index
     if admin?
       @leaves = Leave.where(user_id: params[:format])
@@ -37,9 +38,13 @@ class LeavesController < ApplicationController
         render "/leaves/new"
       end
   end
-  def edit    
-      @leave = Leave.find(params[:id])
-      # render partial: "newedit"
+  def edit
+    if (current_user.id == Leave.find(params[:id]).user_id) || (current_user.role.user_role == "admin")
+       @leave = Leave.find(params[:id])
+    else
+
+      redirect_to "/dashboard"
+    end
   end
   def update
     @leave = Leave.find(params[:id])
@@ -53,9 +58,13 @@ class LeavesController < ApplicationController
     end
   end
   def destroy
-    @leave =  Leave.delete(params[:id])
-    respond_to do |format|
-      format.html {redirect_to "/leaves"}
+    if current_user.id != (Leave.find(params[:id])).user_id
+       redirect_to "/dashboard"
+    else
+      @leave =  Leave.delete(params[:id])
+      respond_to do |format|
+        format.html {redirect_to "/leaves"}
+      end
     end
   end
   # def maximum_leaves
@@ -83,14 +92,10 @@ class LeavesController < ApplicationController
     end
   end
   def leave_decision
-    if !admin?
-      redirect_to "/dashboard"
-    else
       @leave = Leave.find(params[:id])
     # respond_to do |format|
     #   format.html {redirect_to "/leaves/admin_index"}
     # end
-    end
   end
 end
 
