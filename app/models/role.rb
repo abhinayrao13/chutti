@@ -1,6 +1,7 @@
 class Role <  ActiveRecord::Base
   has_many :users
 
+
   def self.get_role_ids
     @roles = self.all
     @result = []

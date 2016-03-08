@@ -1,6 +1,4 @@
 class NoticesController < ApplicationController
-
-  # before_action :authorized, only: [ :edit]
   def index
     @notice = Notice.all.reverse
   end

@@ -2,19 +2,13 @@ class LeavesController < ApplicationController
   before_action :leaves, only: [:new]
   before_action :admin, only: [:leave_decision ,:admin_index]
   def index
-    if admin?
-      @leaves = Leave.where(user_id: params[:format])
-    else
-      @leaves = Leave.where(user_id: current_user.id)
-    end
+    @leaves = Leave.where(user_id: current_user.id)
   end
   def admin_index
     @response = []
     @leaves = Leave.where(status: "pending")
     @leaves.each {|leave| @response << {title: leave.user.name, start: leave.leave_date_from.to_time.iso8601, end: ((leave.leave_date_to)+ 1).to_time.iso8601 , url: "/leaves/#{leave.id}/leave_decision"} }
-    @users = @leaves.collect{|l| l.user.name}
     respond_to do |format|
-      # format.json {render json: {:leaves => @leaves, :users => @users}}
       format.html {render "/leaves/admin_index"}
     end
   end
@@ -38,7 +32,7 @@ class LeavesController < ApplicationController
     if (current_user.id == Leave.find(params[:id]).user_id) || (current_user.role.user_role == "admin")
        @leave = Leave.find(params[:id])
     else
-
+      flash[:notice] = "You Are Not Authorized To Do This"
       redirect_to "/dashboard"
     end
   end
@@ -56,6 +50,7 @@ class LeavesController < ApplicationController
   end
   def destroy
     if current_user.id != (Leave.find(params[:id])).user_id
+      flash[:notice] = "You Are Not Authorized To Do This"
        redirect_to "/dashboard"
     else
       @leave =  Leave.delete(params[:id])
@@ -64,12 +59,6 @@ class LeavesController < ApplicationController
       end
     end
   end
-  # def maximum_leaves
-  #   @maximunleaves = User.find(current_user.id).leaves.count
-  # end
-  # def pending_leaves
-  #   @pending_leaves = Leave.where(status: "pending")
-  # end
   def leave_status_accept
     @leave = Leave.find(params[:id])
     @leave.update(:status => "accepted")
@@ -90,9 +79,6 @@ class LeavesController < ApplicationController
   end
   def leave_decision
       @leave = Leave.find(params[:id])
-    # respond_to do |format|
-    #   format.html {redirect_to "/leaves/admin_index"}
-    # end
   end
 end
 
@@ -101,7 +87,7 @@ private
 # to check the maximum leave requests of the employee accepted by the admin
 def leaves
   if current_user.max_leaves == (current_user.leaves.where(:status => "accepted").count + current_user.leaves.where(:status => "pending").count)
-    flash.now[:notice] = "Sorry , Your Leaves Have been Completed"
+    flash[:notice] = "Sorry , Your Leaves Have been Completed"
     redirect_to "/leaves"
   end
 end
