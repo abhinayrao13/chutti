@@ -1,6 +1,6 @@
 class ListUsersController < ApplicationController
   before_action :admin, except: [:edit, :update, :cancel]
-  before_action :authorized, except: [:delete]
+  before_action :authorized, except: [:delete, :index]
 
   def index
     @user = User.all
