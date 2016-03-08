@@ -30,7 +30,7 @@ Chutti is a web application which helps in managing Employee information.
 
 * First create a new directory to hold the chutti app files -> <tt>mkdir chutti</tt> <tt>cd chutti</tt>
 
-* Now download the project files from github -> </tt>git clone https://github.com/abhinayrao13/chutti.git</tt>
+* Now download the project files from github -> <tt>git clone https://github.com/abhinayrao13/chutti.git</tt>
 
 * <tt>bundle install</tt> to install all the gems required for chutti app
 
