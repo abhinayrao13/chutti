@@ -98,6 +98,7 @@ end
 
 
 private
+# to check the maximum leave requests of the employee accepted by the admin
 def leaves
   if current_user.max_leaves == (current_user.leaves.where(:status => "accepted").count + current_user.leaves.where(:status => "pending").count)
     flash.now[:notice] = "Sorry , Your Leaves Have been Completed"
