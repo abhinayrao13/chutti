@@ -14,7 +14,15 @@ class User < ActiveRecord::Base
   validates :name, :presence => true, format: { with: /\A[a-zA-Z]+\z/, message: "Only alphabets are allowed" }
   validates :phone_no, :numericality => true, :length => { minimum: 10, maximum: 10 }
   validates :gender, :presence => true, inclusion: { in: ["male","female"] }
-  validates :role_id, inclusion: { in: Role.get_role_ids }
+  # if ActiveRecord::Base.connection.table_exists? 'roles'
+  #   validates :role_id, inclusion: { in: Role.get_role_ids }
+  # end
+  validate :check_role
   validates :max_leaves, :numericality => true, presence: true
+  def check_role
+    unless Role.get_role_ids.include?(self.role_id)
+      errors.add(:role_id, "Role not found")
+    end
+  end
 
 end
