@@ -2,27 +2,36 @@
 <% if flash[:notice] %>
   <div class="box box-primary"><br /><div class="container-fluid"><%= flash[:notice] %></div><br /></div>
 <% end %>
-<div class="box box-primary">
-  <div  id="table", class="container-fluid" >
-  </br>
-    <% @notice.each do |f|%>
-      <div class="post">
-        <div class="user-block">
-          <img class="img-circle img-bordered-sm" src="<%= f.user.image.url %>" alt="user image">
-          <span class='username'>
-            <a href="#"><%=f.user.name%></a>
-          </span>
-          <span class='description'>posted on - <%=f.posted_on%></span>
-        </div><!-- /.user-block -->
-        <p>
-            <b>Subject: &nbsp;</b><%= f.subject%>
-        </p>
 
-          <p style="padding-left: 50px;">
-            <%= f.content%>
+<% if @notice.count != 0%>
+  <div class="box box-primary">
+    <div  id="table", class="container-fluid" >
+    </br>
+      <% @notice.each do |f|%>
+        <div class="post">
+          <div class="user-block">
+            <img class="img-circle img-bordered-sm" src="<%= f.user.image.url %>" alt="user image">
+            <span class='username'>
+              <a href="#"><%=f.user.name%></a>
+            </span>
+            <span class='description'>posted on - <%=f.posted_on%></span>
+          </div><!-- /.user-block -->
+          <p>
+              <b>Subject: &nbsp;</b><%= f.subject%>
           </p>
 
-      </div><!-- /.post -->
-    <% end%>
+            <p style="padding-left: 50px;">
+              <%= f.content%>
+            </p>
+
+        </div><!-- /.post -->
+      <% end%>
+    </div>
   </div>
-</div>
+<%else%>
+  <div class="box box-primary ">
+    <div class="box-header">
+      <h3 class="box-title">There Are No notices</h3>
+    </div>
+  </div>
+<% end%>
