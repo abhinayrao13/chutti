@@ -1,4 +1,4 @@
-<% if @leave_details.count != 0%>
+<% if @leave_details.count != 0 %>
   <div class="box box-primary ">
     <div class="box-header">
       <h3 class="box-title">Leaves</h3>
@@ -18,16 +18,16 @@
           </tr>
         </thead>
         <tbody>
-          <% @leave_details.each do |f|%>
+          <% @leave_details.each do |f| %>
             <tr>
-              <td><%= f.id%></td>
-              <td><%= f.user.name%></td>
-              <td><%= f.reason_for_leave%></td>
-              <td><%= f.status%></td>
-              <td><%= f.leave_date_from%></td>
-              <td><%= f.leave_date_to%></td>
+              <td><%= f.id %></td>
+              <td><%= f.user.name %></td>
+              <td><%= f.reason_for_leave %></td>
+              <td><%= f.status %></td>
+              <td><%= f.leave_date_from %></td>
+              <td><%= f.leave_date_to %></td>
             </tr>
-          <%end%>
+          <% end %>
         </tbody>
       </table>
     </div><!-- /.box-body -->
@@ -39,12 +39,51 @@
     </div>
   </div>
 <% end%>
-<% if @checkin_details.count != 0%>
+<% if @user.current_month_avg_checkins != false && @user.current_month_avg_checkouts != false %>
+<div class="box box-primary ">
+  <div class="box-header">
+    <h3 class="box-title">Employee Current Month Average Checkins and Checkouts</h3>
+  </div><!-- /.box-header -->
+  <div class="box-body">
+    <table id="example1" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Employee Name</th>
+          <th>Average Check In Time</th>
+          <th>Average Check Out Time</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><%= @user.id %></td>
+            <td><%= @user.name %></td>
+            <td><%= @user.current_month_avg_checkins %></td>
+            <td><%= @user.current_month_avg_checkouts %></td>
+          </tr>
+      </tbody>
+    </table>
+  </div><!-- /.box-body -->
+</div><!-- /.box -->
+
+<% end %>
+<% if @checkin_details.count != 0 %>
   <div class="box box-primary ">
     <div class="box-header">
       <h3 class="box-title">Employee Checkins and Checkouts</h3>
     </div><!-- /.box-header -->
     <div class="box-body">
+      <div class="row">
+        <lable class="col-sm-3"><b>Average Check In Time:</b></lable>
+        <%= @user.current_month_avg_checkins %>
+      </div>
+      <div class="row">
+        <lable class="col-sm-3"><b>Average Check Out Time:</b></lable>
+        <%= @user.current_month_avg_checkouts %>
+      </div><br>
       <table id="example1" class="table table-striped">
         <thead>
           <tr>
@@ -58,22 +97,22 @@
           </tr>
         </thead>
         <tbody>
-          <% @checkin_details.each do |f|%>
+          <% @checkin_details.each do |f| %>
             <tr>
-              <td><%= f.id%></td>
+              <td><%= f.id %></td>
               <td><%= f.user.name %></td>
-              <td><%= f.check_in%></td>
-              <td><%= f.check_in%></td>
+              <td><%= f.check_in %></td>
+              <td><%= f.check_out %></td>
             </tr>
           <%end%>
         </tbody>
       </table>
     </div><!-- /.box-body -->
   </div><!-- /.box -->
-<%else%>
+<% else %>
   <div class="box box-primary ">
     <div class="box-header">
       <h3 class="box-title">There Are No Checkin & checkouts</h3>
     </div>
   </div>
-<% end%>
+<% end %>

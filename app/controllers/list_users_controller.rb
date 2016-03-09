@@ -52,6 +52,7 @@ class ListUsersController < ApplicationController
 
 
   def employee_leaves_checkinouts
+    @user = User.find(params[:id].to_i)
     @leave_details = Leave.where(:user_id => params[:id])
     @checkin_details = Checkin.where(:user_id => params[:id])
   end
