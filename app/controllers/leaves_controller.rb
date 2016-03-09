@@ -6,8 +6,12 @@ class LeavesController < ApplicationController
   end
   def admin_index
     @response = []
-    @leaves = Leave.where(status: "pending")
-    @leaves.each {|leave| @response << {title: leave.user.name, start: leave.leave_date_from.to_time.iso8601, end: ((leave.leave_date_to)+ 1).to_time.iso8601 , url: "/leaves/#{leave.id}/leave_decision"} }
+    @pending_leaves = Leave.where(status: "pending")
+    @accepted_leaves = Leave.where(status: "accepted")
+    @rejected_leaves = Leave.where(status: "declined")
+    @pending_leaves.each {|leave| @response << {title: leave.user.name, start: leave.leave_date_from.to_time.iso8601, end: ((leave.leave_date_to)+ 1).to_time.iso8601 , url: "/leaves/#{leave.id}/leave_decision", color: '#e6ac00' } }
+    @accepted_leaves.each {|leave| @response << {title: leave.user.name, start: leave.leave_date_from.to_time.iso8601, end: ((leave.leave_date_to)+ 1).to_time.iso8601 , url: "/leaves/#{leave.id}/leave_decision", color: 'green' } }
+    @rejected_leaves.each {|leave| @response << {title: leave.user.name, start: leave.leave_date_from.to_time.iso8601, end: ((leave.leave_date_to)+ 1).to_time.iso8601 , url: "/leaves/#{leave.id}/leave_decision", color: 'red' } }
     respond_to do |format|
       format.html {render "/leaves/admin_index"}
     end
