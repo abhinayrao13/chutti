@@ -8,7 +8,7 @@ class CheckinsController < ApplicationController
     if checked_in == false || checked_in == "recheck"
       @current_user_id = current_user.id
       @current_date = Date.today
-      @checkin_time = Time.new
+      @checkin_time = Time.now
       @checkin = Checkin.new(user_id: @current_user_id, date: @current_date, check_in: @checkin_time)
       respond_to do |format|
         if @checkin.save
