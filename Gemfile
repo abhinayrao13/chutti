@@ -54,3 +54,6 @@ end
   # Seed Dump is a Rails 4 and 5 plugin that adds a rake task named db:seed:dump.
   # It allows you to create seed data files from the existing data in your database.
   gem 'seed_dump'
+
+  # Kaminari is a Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
+  gem 'kaminari'
