@@ -1,10 +1,14 @@
-<h3>Notice Board</h3>
+<div class="box box-primary">
+  <div class="box-header with-border">
+    <h3 class="box-title">Notice Board</h3>
+    <%= link_to "Add Notice", "/notices/new", class: "btn btn-primary pull-right" %>
+  </div>
 <% if flash[:notice] %>
-  <div class="box box-primary"><br /><div class="container-fluid"><%= flash[:notice] %></div><br /></div>
+  <div class="container-fluid"><%= flash[:notice] %></div>
 <% end %>
 
 <% if @notice.count != 0%>
-  <div class="box box-primary">
+  <!-- <div class="box box-primary"> -->
     <div  id="table", class="container-fluid" >
     </br>
       <% @notice.each do |f|%>
@@ -27,11 +31,11 @@
         </div><!-- /.post -->
       <% end%>
     </div>
-  </div>
+  <!-- </div> -->
 <%else%>
-  <div class="box box-primary ">
+  <!-- <div class="box box-primary "> -->
     <div class="box-header">
       <h3 class="box-title">There Are No notices</h3>
     </div>
-  </div>
+  <!-- </div> -->
 <% end%>

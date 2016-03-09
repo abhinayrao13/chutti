@@ -144,7 +144,7 @@
         <li class="header">MENU</li>
         <li class="<%= 'active' if (params[:controller] == 'notices' && params[:action] == 'index')%>"><a href="/notices"><i class="glyphicon glyphicon-pushpin"></i> <span>Notice Board</span></a></li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="<%= 'active' if (params[:controller] == 'notices' && params[:action] == 'new')%>"><a href="/notices/new"><i class="glyphicon glyphicon-edit"></i> <span>Add Notice</span></a></li>
+        <!-- <li class="<%= 'active' if (params[:controller] == 'notices' && params[:action] == 'new')%>"><a href="/notices/new"><i class="glyphicon glyphicon-edit"></i> <span>Add Notice</span></a></li> -->
         <% if !admin?%>
           <li class="<%= 'active' if params[:controller] == 'leaves' && params[:action] == 'index'%>"><a href="/leaves"><i class="glyphicon glyphicon-list-alt"></i> <span>List of Leaves</span></a></li>
         <% end%>
@@ -155,7 +155,7 @@
           <li class="<%= 'active' if (params[:controller] == 'leaves' && params[:action] == 'new')%>" ><a href="/leaves/new"><i class="glyphicon glyphicon-ok-sign"></i> <span>Apply For Leave</span></a></li>
         <%end%>
         <% if admin?%>
-          <li class="<%= 'active' if (params[:controller] == 'list_users' && params[:action] == 'new')%>" ><a href="/list_users/new"><i class="glyphicon glyphicon-plus-sign"></i> <span>Add New Employee</span></a></li>
+          <!-- <li class="<%= 'active' if (params[:controller] == 'list_users' && params[:action] == 'new')%>" ><a href="/list_users/new"><i class="glyphicon glyphicon-plus-sign"></i> <span>Add New Employee</span></a></li> -->
           <li class="<%= 'active' if (params[:controller] == 'list_users' && params[:action] == 'index')%>" ><a href="/list_users"><i class="glyphicon glyphicon-sort-by-alphabet"></i> <span>Employee List</span></a></li>
           <li class="<%= 'active' if (params[:controller] == 'roles' && params[:action] == 'index')%>" ><a href="/roles"><i class="glyphicon glyphicon-sort-by-attributes-alt"></i> <span>Roles</span></a></li>
         <%end%>
