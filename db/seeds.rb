@@ -8,7 +8,7 @@ User.create!([
   {email: "kiran@gmail.com", password: "12345678", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 6, current_sign_in_at: "2016-03-08 01:10:28", last_sign_in_at: "2016-03-05 05:45:14", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", name: "kiran", gender: "male", phone_no: "1234567890", role_id: 2, max_leaves: 12, image_uid: "icon-user-default.png"},
   {email: "madhu@gmail.com", password: "12345678", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2016-03-08 00:06:56", last_sign_in_at: "2016-03-05 06:41:37", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", name: "madhu", gender: "male", phone_no: "1234567890", role_id: 2, max_leaves: 12, image_uid: "icon-user-default.png"},
   {email: "fazalvjit81@gmail.com", password: "12345678", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 6, current_sign_in_at: "2016-03-08 01:30:54", last_sign_in_at: "2016-03-07 23:40:46", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", name: "fazal", gender: "male", phone_no: "1234567890", role_id: 2, max_leaves: 12, image_uid: "icon-user-default.png"},
-  {email: "abhinayrao13@gmail.com", password: "12345678", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2016-03-08 03:57:41", last_sign_in_at: "2016-03-08 02:12:37", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", name: "ABHINAY", gender: "male", phone_no: "1234567890", role_id: 2, max_leaves: 12, image_uid: "icon-user-default.png"}
+  {email: "abhinayrao13@gmail.com", password: "12345678", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2016-03-08 03:57:41", last_sign_in_at: "2016-03-08 02:12:37", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", name: "abhinay", gender: "male", phone_no: "1234567890", role_id: 2, max_leaves: 12, image_uid: "icon-user-default.png"}
 ])
 Checkin.create!([
   {user_id: 2, date: "2016-03-04", check_in: "2016-03-04 03:53:48", check_out: "2016-03-04 06:52:22"},
@@ -20,7 +20,7 @@ Checkin.create!([
   {user_id: 1, date: "2016-03-08", check_in: "2016-03-08 01:21:10", check_out: "2016-03-08 01:21:12"}
 ])
 Leave.create!([
-  {reason_for_leave: "headacehe", user_id: 2, status: "pending", leave_date_from: "2016-03-04", leave_date_to: "2016-03-05"},
+  {reason_for_leave: "headache", user_id: 2, status: "pending", leave_date_from: "2016-03-04", leave_date_to: "2016-03-05"},
   {reason_for_leave: "fever", user_id: 3, status: "pending", leave_date_from: "2016-03-23", leave_date_to: "2016-03-26"},
   {reason_for_leave: "back pain", user_id: 4, status: "pending", leave_date_from: "2016-05-07", leave_date_to: "2016-05-10"},
   {reason_for_leave: "stomach pain", user_id: 5, status: "pending", leave_date_from: "2016-04-04", leave_date_to: "2016-04-07"},

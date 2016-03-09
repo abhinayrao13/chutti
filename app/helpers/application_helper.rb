@@ -10,6 +10,7 @@ module ApplicationHelper
   # redirects to dashboard if current user is not admin
   def admin
     if !current_user.role.user_role.eql? "admin"
+      flash[:notice] = "You Are Not Authorized To Do This"
       redirect_to "/dashboard"
     end
   end
@@ -17,6 +18,7 @@ module ApplicationHelper
   # checks if the user is authorized to perform any action
   def authorized
    if current_user.id != params[:id].to_i
+     flash[:notice] = "You Are Not Authorized To Do This"
      redirect_to "/dashboard"
    end
  end
