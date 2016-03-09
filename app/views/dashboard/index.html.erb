@@ -1,2 +1,106 @@
+<% if @pending_leaves.count != 0 %>
+  <div class="box box-primary ">
+    <div class="box-header">
+      <h3 class="box-title">Pending Leave Requests</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+      <table id="example1" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Reason For Leave</th>
+            <th>Status</th>
+            <th>Leave From</th>
+            <th>Leave To </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pending_leaves.each do |f|%>
+            <tr>
+              <td><%= f.user.name %></td>
+              <td><%= f.reason_for_leave %></td>
+              <td><%= f.status %></td>
+              <td><%= f.leave_date_from %></td>
+              <td><%= f.leave_date_to %></td>
+              <% if !admin? %>
+                <%if f.status == "pending" %>
+                  <td><%= link_to "", "/leaves/#{f.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit" %></td>
+                  <td> <%= link_to "", "/leaves/#{f.id}" , method: "delete",class: "btn btn-primary glyphicon glyphicon-trash" %></td>
+                <% end %>
+              <% end %>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div><!-- /.box-body -->
+  </div><!-- /.box -->
+  <!-- <%else%>
+    <div class="box box-primary ">
+      <div class="box-header">
+        <h3 class="box-title">There Are No Leaves</h3>
+      </div>
+    </div> -->
+  <% end %>
 
-<%= render "notices/index2"%>
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Timeline
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- row -->
+      <% @all_dates_checkins.each do |date| %>
+      <div class="row">
+        <div class="col-md-12">
+          <!-- The time line -->
+          <ul class="timeline">
+            <!-- timeline time label -->
+            <li class="time-label">
+                  <span class="bg-red">
+                    <%= date.keys.first.strftime("%d %b, %Y") %>
+                  </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+
+              <% (date.values).each do |values| %>
+                <% (values).each do |checkin| %>
+                  <% if checkin.check_out != nil %>
+                    <li>
+                      <img class="img-circle img-bordered-sm" src="<%= checkin.user.image.url %>" alt="user image" width="42" height="42">
+                      <div class="timeline-item">
+                        <div class="timeline-body">
+                          <%= checkin.user.name+" checked out at "+checkin.check_out.strftime("%I:%M%p") %>
+                        </div>
+                      </div>
+                    </li>
+                <% end %>
+                  <li>
+                    <img class="img-circle img-bordered-sm" src="<%= checkin.user.image.url %>" alt="user image" width="42" height="42">
+                    <div class="timeline-item">
+                      <div class="timeline-body">
+                        <%= checkin.user.name+" checked in at "+checkin.check_in.strftime("%I:%M%p")%>
+                      </div>
+                    </div>
+                  </li>
+              <% end%>
+            <% end%>
+            <!-- END timeline item -->
+            <!-- timeline item -->
+          </ul>
+        </div>
+        <!-- /.col -->
+      </div>
+      <% end%>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+</div>
+<!-- ./wrapper -->

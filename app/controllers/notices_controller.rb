@@ -18,7 +18,7 @@ class NoticesController < ApplicationController
   end
   def edit
     if current_user.id != (Notice.find(params[:id])).user_id
-       redirect_to "/dashboard"
+       redirect_to "/notices"
     else
       @notice = Notice.find(params[:id])
     end
@@ -36,7 +36,7 @@ class NoticesController < ApplicationController
   end
   def destroy
     if current_user.id != (Notice.find(params[:id])).user_id
-       redirect_to "/dashboard"
+       redirect_to "/notices"
     else
       @notice = Notice.delete(params[:id])
       respond_to do |format|

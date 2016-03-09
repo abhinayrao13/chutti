@@ -3,22 +3,30 @@
     <h3 class="box-title">Leave Decision</h3>
   </div><!-- /.box-header -->
   <div class="box-body">
-    <div  class ="text-xs-center">
-      <label>Id: </label>
-      <%= @leave.id%></br>
-      <label>Reason: </label>
-      <%= @leave.reason_for_leave%></br>
-      <label>Status: </label>
-      <%= @leave.status%></br>
-      <label>Leave From: </label>
-      <%= @leave.leave_date_from%></br>
-      <label>Leave TO: </label>
-      <%= @leave.leave_date_to%></br>
+    <div class="row">
+      <label class="col-md-2" >Employee Name: </label>
+      <%= @user %></br>
     </div>
-      <% if @leave.status == "pending"%>
-        <%= link_to "", "/leaves/#{@leave.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit"%>
-        <%= link_to "Decline", "/leaves/#{@leave.id}/leave_status_decline", class: "btn btn-primary pull-right glyphicon glyphicon-remove"%>
-        <%= link_to "Accept", "/leaves/#{@leave.id}/leave_status_accept", class: "btn btn-primary pull-right glyphicon glyphicon-ok"%>
-      <% end%>
+    <div class="row">
+      <label class="col-sm-2">Reason: </label>
+      <%= @leave.reason_for_leave %></br>
+    </div>
+    <div class="row">
+      <label class="col-sm-2">Status: </label>
+      <%= @leave.status %></br>
+    </div>
+    <div class="row">
+      <label class="col-md-2">Leave From: </label>
+      <%= @leave.leave_date_from %></br>
+    </div>
+    <div class="row">
+      <label class="col-sm-2">Leave TO: </label>
+      <%= @leave.leave_date_to %></br>
+    </div>
+    <% if @leave.status == "pending"%>
+      <%= link_to "", "/leaves/#{@leave.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit" %>
+      <%= link_to "Decline", "/leaves/#{@leave.id}/leave_status_decline", class: "btn btn-danger pull-right glyphicon glyphicon-remove", style: "margin-left:  10px" %>
+      <%= link_to "Accept", "/leaves/#{@leave.id}/leave_status_accept", class: "btn btn-success pull-right glyphicon glyphicon-ok" %>
+    <% end%>
   </div><!-- /.box-body -->
 </div><!-- /.box -->

@@ -29,7 +29,7 @@ class ListUsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "Details Updated Successfully."
-      redirect_to "/dashboard"
+      redirect_to "/notices"
     else
       render "edit"
     end

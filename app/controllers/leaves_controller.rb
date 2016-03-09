@@ -37,7 +37,7 @@ class LeavesController < ApplicationController
        @leave = Leave.find(params[:id])
     else
       flash[:notice] = "You Are Not Authorized To Do This"
-      redirect_to "/dashboard"
+      redirect_to "/notices"
     end
   end
   def update
@@ -55,7 +55,7 @@ class LeavesController < ApplicationController
   def destroy
     if current_user.id != (Leave.find(params[:id])).user_id
       flash[:notice] = "You Are Not Authorized To Do This"
-       redirect_to "/dashboard"
+       redirect_to "/notices"
     else
       @leave =  Leave.delete(params[:id])
       respond_to do |format|
@@ -83,6 +83,7 @@ class LeavesController < ApplicationController
   end
   def leave_decision
       @leave = Leave.find(params[:id])
+      @user = @leave.user.name
   end
 end
 
