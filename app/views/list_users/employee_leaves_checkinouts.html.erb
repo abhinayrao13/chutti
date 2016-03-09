@@ -32,12 +32,6 @@
       </table>
     </div><!-- /.box-body -->
   </div><!-- /.box -->
-<%else%>
-  <div class="box box-primary ">
-    <div class="box-header">
-      <h3 class="box-title">There Are No Leaves</h3>
-    </div>
-  </div>
 <% end%>
 <% if @user.current_month_avg_checkins != false && @user.current_month_avg_checkouts != false %>
 <div class="box box-primary ">
@@ -109,10 +103,4 @@
       </table>
     </div><!-- /.box-body -->
   </div><!-- /.box -->
-<% else %>
-  <div class="box box-primary ">
-    <div class="box-header">
-      <h3 class="box-title">There Are No Checkin & checkouts</h3>
-    </div>
-  </div>
 <% end %>
