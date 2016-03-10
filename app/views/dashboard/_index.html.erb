@@ -18,7 +18,7 @@
       <img class="img-circle img-bordered-sm" src="<%= @users[c.user_id][:url] %>" alt="user image" width="42" height="42">
       <div class="timeline-item">
         <div class="timeline-body">
-          <%= @users[c.user_id][:name] + " #{c.id} - #{c.date} checked in at " + c.check_in.to_date.strftime("%I:%M%p") %>
+          <%= @users[c.user_id][:name] + " checked in at " + c.check_in.to_date.strftime("%I:%M%p") %>
         </div>
       </div>
     </li>
@@ -27,7 +27,7 @@
         <img class="img-circle img-bordered-sm" src="<%= @users[c.user_id][:url] %>" alt="user image" width="42" height="42">
         <div class="timeline-item">
           <div class="timeline-body">
-            <%= @users[c.user_id][:name] + " #{c.id} - #{c.date} checked out at " + c.check_out.to_date.strftime("%I:%M%p") %>
+            <%= @users[c.user_id][:name] + " checked out at " + c.check_out.to_date.strftime("%I:%M%p") %>
           </div>
         </div>
       </li>
