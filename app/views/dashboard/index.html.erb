@@ -41,66 +41,30 @@
       </div>
     </div> -->
   <% end %>
+  
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Timeline
+    </h1>
+  </section>
+  <!-- Main content -->
+  <section class="content">
 
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Timeline
-      </h1>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- row -->
-      <% @all_dates_checkins.each do |date| %>
-      <div class="row">
+    <br>
+    <!-- row -->
+    <div class="row">
         <div class="col-md-12">
-          <!-- The time line -->
-          <ul class="timeline">
-            <!-- timeline time label -->
-            <li class="time-label">
-                  <span class="bg-red">
-                    <%= date.keys.first.strftime("%d %b, %Y") %>
-                  </span>
-            </li>
-            <!-- /.timeline-label -->
-            <!-- timeline item -->
-
-              <% (date.values).each do |values| %>
-                <% (values).each do |checkin| %>
-                  <% if checkin.check_out != nil %>
-                    <li>
-                      <img class="img-circle img-bordered-sm" src="<%= checkin.user.image.url %>" alt="user image" width="42" height="42">
-                      <div class="timeline-item">
-                        <div class="timeline-body">
-                          <%= checkin.user.name+" checked out at "+checkin.check_out.strftime("%I:%M%p") %>
-                        </div>
-                      </div>
-                    </li>
-                <% end %>
-                  <li>
-                    <img class="img-circle img-bordered-sm" src="<%= checkin.user.image.url %>" alt="user image" width="42" height="42">
-                    <div class="timeline-item">
-                      <div class="timeline-body">
-                        <%= checkin.user.name+" checked in at "+checkin.check_in.strftime("%I:%M%p")%>
-                      </div>
-                    </div>
-                  </li>
-              <% end%>
-            <% end%>
-            <!-- END timeline item -->
-            <!-- timeline item -->
-          </ul>
+            <ul class="timeline" id="checks">
+               <%= render :partial => 'index', :locals => { :checkins => @desc_checkins, :current_date_rendered => @current_date_rendered, :current_date =>  @desc_checkins[0]["date"] } %>
+            </ul>
         </div>
-        <!-- /.col -->
-      </div>
-      <% end%>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-</div>
-<!-- ./wrapper -->
+    </div>
+    <%#= link_to_next_page(@desc_checkins, 'Next Page', :remote => true) %>
+    <%= paginate @desc_checkins %>
+    <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->

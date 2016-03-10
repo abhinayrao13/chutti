@@ -1,0 +1,35 @@
+  <% checkins.each do |c| %>
+  <% c = OpenStruct.new c %>
+  <% current_date_rendered, current_date = false, c.date if current_date != c.date %>
+  <!-- The time line -->
+    <!-- timeline time label -->
+    <% if current_date == c.date && current_date_rendered == false %>
+      <li class="time-label <%= c.date %>" >
+        <span class="bg-red">
+        <%= c.date.to_date.strftime("%d %b, %Y") %>
+        </span>
+      </li>
+    <% current_date_rendered = true %>
+    <% end %>
+    <!-- /.timeline-label -->
+    <!-- timeline item -->
+    <% if c.type == "check_in" %>
+    <li>
+      <img class="img-circle img-bordered-sm" src="<%= @users[c.user_id][:url] %>" alt="user image" width="42" height="42">
+      <div class="timeline-item">
+        <div class="timeline-body">
+          <%= @users[c.user_id][:name] + " #{c.id} - #{c.date} checked in at " + c.check_in.to_date.strftime("%I:%M%p") %>
+        </div>
+      </div>
+    </li>
+    <% else %>
+      <li>
+        <img class="img-circle img-bordered-sm" src="<%= @users[c.user_id][:url] %>" alt="user image" width="42" height="42">
+        <div class="timeline-item">
+          <div class="timeline-body">
+            <%= @users[c.user_id][:name] + " #{c.id} - #{c.date} checked out at " + c.check_out.to_date.strftime("%I:%M%p") %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  <% end %>

@@ -57,3 +57,6 @@ end
 
   # Kaminari is a Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
   gem 'kaminari'
+
+
+  gem 'jquery-infinite-pages'
