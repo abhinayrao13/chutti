@@ -4,5 +4,4 @@ $(document).ready(function() {
     nextSelector: "nav.pagination a[rel=next]",
     itemSelector: "#checks"
   });
-
 })
