@@ -35,6 +35,9 @@ class LeavesController < ApplicationController
   def edit
     if (current_user.id == Leave.find(params[:id]).user_id) || (current_user.role.user_role == "admin")
        @leave = Leave.find(params[:id])
+       p "------------url"
+       p request.referer
+       p session[:return_to] = request.referer
     else
       flash[:notice] = "You Are Not Authorized To Do This"
       redirect_to "/notices"
@@ -42,11 +45,11 @@ class LeavesController < ApplicationController
   end
   def update
     @leave = Leave.find(params[:id])
-    @leave.update(:reason_for_leave => params[:leave][:reason_for_leave], :user_id => current_user.id, :status => "pending", :leave_date_from => params[:leave][:leave_date_from].to_date,:leave_date_to => params[:leave][:leave_date_to].to_date)
+    @leave.update(:reason_for_leave => params[:leave][:reason_for_leave], :leave_date_from => params[:leave][:leave_date_from].to_date,:leave_date_to => params[:leave][:leave_date_to].to_date)
     flash[:notice] = "Leave Updated Successfully"
     respond_to do |format|
       if admin?
-        format.html {redirect_to "/leaves/#{@leave.id}/leave_decision"}
+        format.html {redirect_to session.delete(:return_to)}
       else
         format.html {redirect_to "/leaves"}
      end
@@ -63,13 +66,22 @@ class LeavesController < ApplicationController
       end
     end
   end
+  def leave_decision
+      @leave = Leave.find(params[:id])
+      @user = @leave.user.name
+      p session[:return] = request.referer
+  end
   def leave_status_accept
     @leave = Leave.find(params[:id])
     @leave.update(:status => "accepted")
     @user = @leave.user
-    UserMailer.accepted_email(@user,@leave).deliver_now
+    # UserMailer.accepted_email(@user,@leave).deliver_now
     respond_to do |format|
-      format.html {redirect_to "/leaves/admin_index"}
+      if session[:return] != nil
+        format.html {redirect_to session.delete(:return)}
+      else
+        format.html {redirect_to request.referer}
+      end
     end
   end
   def leave_status_decline
@@ -78,13 +90,14 @@ class LeavesController < ApplicationController
     @user = @leave.user
     UserMailer.declined_email(@user,@leave).deliver_now
     respond_to do |format|
-      format.html {redirect_to "/leaves/admin_index"}
+      if session[:return] != nil
+        format.html {redirect_to session.delete(:return)}
+      else
+        format.html {redirect_to request.referer}
+      end
     end
   end
-  def leave_decision
-      @leave = Leave.find(params[:id])
-      @user = @leave.user.name
-  end
+
 end
 
 

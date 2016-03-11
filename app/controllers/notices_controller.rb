@@ -1,6 +1,6 @@
 class NoticesController < ApplicationController
   def index
-    @notice = Notice.all.reverse
+    @notice =  Notice.order('id  DESC')
   end
   def new
     @notice = Notice.new
