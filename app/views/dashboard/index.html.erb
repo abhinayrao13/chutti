@@ -31,7 +31,31 @@
             </tr>
             <% end %>
           </tbody>
-        </table>
-      </div><!-- /.box-body -->
-    </div><!-- /.box -->
-  <% end %>
+      </table>
+    </div><!-- /.box-body -->
+  </div><!-- /.box -->
+<% end %>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Timeline
+    </h1>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="timeline" id="checks">
+               <%= render :partial => 'index', :locals => { :checkins => @desc_checkins, :current_date_rendered => @current_date_rendered, :current_date =>  @desc_checkins[0]["date"] } %>
+            </ul>
+        </div>
+    </div>
+    <%#= link_to_next_page(@desc_checkins, 'Next Page', :remote => true) %>
+    <%= paginate @desc_checkins %>
+    <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
