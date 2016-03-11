@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   before_action :admin
   def index
     @pending_leaves = Leave.where(status: "pending").reverse
-    @desc_checkins = Checkin.order(date: :desc)
+    @desc_checkins = Checkin.all
     @users = User.where(:id => @desc_checkins.collect{|x| x.user_id}).collect{|x| {x.id => {url: x.image.url, name: x.name}}}.reduce( Hash.new, :merge)
     @desc_checkins = [@desc_checkins.as_json.each{|x| x["type"] = "check_in"} + @desc_checkins.select{|x| x.check_out != nil}.as_json.each{|x| x["type"] = "check_out"}].flatten.sort{|x,y| x["date"] <=> y["date"]}.reverse
     @desc_checkins = @desc_checkins.as_json
