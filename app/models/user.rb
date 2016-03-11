@@ -28,14 +28,17 @@ class User < ActiveRecord::Base
   def current_month_avg_checkins
     @current_month = Date.today.month
     @user_checkins = self.checkins
-    @result = []
+    @month_checkins = []
     @user_checkins.each do |u|
       if u.date.month == @current_month
-        @result << u
+        @month_checkins << u
       end
     end
-
-
+    @uniq_checkins = @month_checkins.collect(&:date).uniq
+    @result = []
+    @uniq_checkins.each do |x|
+      @result << @month_checkins.select{|n| n.date == x}.first
+    end
     @a = 0
     t1 = Time.now
     t2 = nil
@@ -54,11 +57,17 @@ class User < ActiveRecord::Base
   def current_month_avg_checkouts
     @current_month = Date.today.month
     @user_checkins = self.checkins
-    @result = []
+
+    @month_checkins = []
     @user_checkins.each do |u|
       if u.date.month == @current_month && u.check_out != nil
-        @result << u
+        @month_checkins << u
       end
+    end
+    @uniq_checkins = @month_checkins.collect(&:date).uniq
+    @result = []
+    @uniq_checkins.each do |x|
+      @result << @month_checkins.select{|n| n.date == x}.last
     end
     @a = 0
     t1 = Time.now
