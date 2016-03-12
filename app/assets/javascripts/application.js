@@ -24,3 +24,5 @@
 //= require custom
 //= require fullcalendar.min
 //= require checkin
+//= require jquery.infinitescroll
+//= require checks

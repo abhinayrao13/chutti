@@ -1,2 +1,61 @@
+<% if flash[:notice] %>
+  <div class="box box-primary"><br /><div class="container-fluid"><%= flash[:notice] %></div><br /></div>
+<% end %>
+<% if @pending_leaves.count != 0 %>
+  <div class="box box-primary ">
+    <div class="box-header">
+      <h3 class="box-title">Pending Leave Requests</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+      <table id="example1" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Leave From</th>
+            <th>Leave To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pending_leaves.each do |f|%>
+            <tr>
+              <td><%= f.user.name %></td>
+              <td><%= f.reason_for_leave %></td>
+              <td><%= f.status %></td>
+              <td><%= f.leave_date_from %></td>
+              <td><%= f.leave_date_to %></td>
+              <td><%= link_to "", "/leaves/#{f.id}/edit",class: "btn btn-primary glyphicon glyphicon-edit" %></td>
+              <td><%= link_to "Accept", "/leaves/#{f.id}/leave_status_accept", class: "btn btn-success pull-right glyphicon glyphicon-ok" %></td>
+              <td><%= link_to "Decline", "/leaves/#{f.id}/leave_status_decline", class: "btn btn-danger pull-right glyphicon glyphicon-remove" %></td>
+            </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div><!-- /.box-body -->
+  </div><!-- /.box -->
+<% end %>
 
-<%= render "notices/index2"%>
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Timeline
+    </h1>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="timeline" id="checks">
+               <%= render :partial => 'index', :locals => { :checkins => @desc_checkins, :current_date_rendered => @current_date_rendered, :current_date =>  @desc_checkins[0]["date"] } %>
+            </ul>
+        </div>
+    </div>
+    <%#= link_to_next_page(@desc_checkins, 'Next Page', :remote => true) %>
+    <%= paginate @desc_checkins %>
+    <!-- /.row -->
+      </section>
+      <!-- /.content -->
+  
+    <!-- /.content-wrapper -->

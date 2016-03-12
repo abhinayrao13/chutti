@@ -29,7 +29,7 @@ class ListUsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "Details Updated Successfully."
-      redirect_to "/dashboard"
+      redirect_to "/notices"
     else
       render "edit"
     end
@@ -52,6 +52,7 @@ class ListUsersController < ApplicationController
 
 
   def employee_leaves_checkinouts
+    @user = User.find(params[:id].to_i)
     @leave_details = Leave.where(:user_id => params[:id])
     @checkin_details = Checkin.where(:user_id => params[:id])
   end
